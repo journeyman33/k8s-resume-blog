@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "About the Kubernetes Resume Challenge"
+title:      "The Kubernetes Resume Challenge"
 subtitle:   "Pre-amble"
 date:       2024-03-05
 author:     "Charles Vosloo"
