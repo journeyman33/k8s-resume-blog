@@ -2,7 +2,7 @@
 layout:     post
 title:      "The Kubernetes Resume Challenge"
 subtitle:   "Pre-amble"
-date:       2024-03-05
+date:       "2024-03-05"
 author:     "Charles Vosloo"
 image:      "img/k8s-resume-banner.png"
 ---
