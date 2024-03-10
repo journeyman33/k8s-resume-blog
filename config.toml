@@ -1,5 +1,5 @@
 baseurl = "https://zhaohuabing.com"
-title = "Kubernetes Resume Challenge"
+title = "Cloud Kubernetes Resume Challenge"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
