@@ -1,11 +1,10 @@
 ---
-title:       "Week One"
-subtitle:    "dockerize the eccomerce site"
+title:       "Week Three"
+subtitle:    "Kubernetes automation and persistance"
 description: ""
-date:        "2024-03-06"
+date:        "2024-03-05"
 author:      "Charles Vosloo"
 image:       ""
 tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]
 ---
-My first post!
