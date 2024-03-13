@@ -38,7 +38,7 @@ home = ["HTML", "RSS", "Algolia"]
   # Sidebar settings
   sidebar_about_description = "Devops Engineer, Open Source Enthusiast and Hiker"
   #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_avatar = "img/zhaohuabing.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_avatar = "img/eye_of_africa_pic2.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
   featured_tags = true 
   featured_condition_size = 1 
@@ -68,21 +68,21 @@ home = ["HTML", "RSS", "Algolia"]
   #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
 
   [params.social]
-  rss            = true 
-  email          = "youremail@gmail.com"
+  rss            = false
+  email          = "voslooc@gmail.com"
   #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
   #twitter       = "full profile url in twitter"
-  linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
-  stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
+  linkedin       = "https://www.linkedin.com/in/charlesvosloo/"
+  #stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
   #instagram     = "full profile url in instagram"
-  github         = "https://github.com/yourgithub"
-  wechat         = "your wechat qr code image"
+  github         = "https://github.com/journeyman33"
+  #wechat         = "your wechat qr code image"
   #medium        = "full profile url in medium"
   #slack         = "full workspace url in slack"
   #pinterest     = "full profile url in pinterest"
   #reddit        = "full profile url in reddit"
-  #gitlab        = "full profile url in gitlab"
+  gitlab         = "https://gitlab.com/-/user_settings/profile"
   #mastodon      = "full profile url in mastodon"
   #keybase       = "full profile url in keybase"
   #xing          = "https://www.xing.com/profile/yourxingid"

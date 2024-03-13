@@ -28,7 +28,7 @@ I am not sure what he meant by "might not have all the features"
 ![screenshot](/img/disqus.png)
 -->
 
-## Describ3 the Task
+## Describe the Task
 
 Imagine you are going to deploy an e-commerce website. It’s crucial to consider the challenges of modern web application deployment and how containerization and Kubernetes (K8s) offer compelling solutions:
 
