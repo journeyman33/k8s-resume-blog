@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "The Kubernetes Resume Challenge"
-subtitle:   "Pre-amble"
+title:      "Cloud Resume Challenge: Kubernetes"
+subtitle:   "E-commerce Web App Deploymet in Kubernetes Cluster"
 date:       "2024-03-05"
 author:     "Charles Vosloo"
 image:      "img/k8s-resume-banner.png"

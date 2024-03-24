@@ -12,31 +12,31 @@ tags:
 categories:  ["mynotes" ]
 URL: "/2024/03/10/civo_comands/"
 ---
-##  basic civo setup
-### click ops on the ui
-### Terraform script
-### civo cli commands
+## civo cli commands
 
 
 ### civo aliases 
-k3s = kubernetes  
-apps = applications   
-ecom = the name of my cluster  
+kubernetes = k3s, k8s, kube  
+applications = apps, addons, marketplace  
 save = save, add, store, create, new
 
+ecom = the name of my cluster ` ` ecom = applicaion namespace 
+
+### Set up civo api key
+
+Get API key from civo Dashboard > login at https://dashboard.civo.com/
 civo apikey add my-civo  DAb75..
+civo apikey ls (confirm)
+
+### 1. setup 
+
+civo kubernetes create ecom --remove-applications=traefik2-nodeport --applications traefik2-loadbalancer,cert-manager --cni-plugin cilium  -n 1 -s g4s.kube.medium create-firewall  --wait --save --merge --switch
 
 civo kubernetes config ecom --save (adds kubeconfig to ~/.kube/cofig)
+k ctx    (confirm current cluster with krew plugin)
 
-create ecom --remove-applications=traefik2-nodeport --applications traefik2-loadbalancer,cert-manager
-
-civo kubernetes apps list
-
-
-## setup 
-
-1. civo kubernetes create ecom --remove-applications=traefik2-nodeport --applications traefik2-loadbalancer,cert-manager -n 1 -s g4s.kube.medium create-firewall  --wait --save --merge --switch
-
+kubectl create namespace ecom 
+k ns ecom (krew ns plugin)
 
 ### 2. cofirm what is installed:
 civo k3s apps ls  (list everyting in the marketplace)
@@ -45,14 +45,14 @@ civo k3s apps show traefik2-loadbalancer ecom
 civo loadbalancer show civo-kube-system-traefik  
 civo k3s show ecom  (everything inside the ecom cluster)
 
-### 3. add a marketplace app mysql to existing ecom cluster  ( not using!)
+### 3. add a marketplace apps to existing ecom cluster...  ( not using !)
 civo k3s apps add mysql --cluster ecom 
 civo k3s show ecom             
 civo k3s apps show mysql ecom   
 
 ## Exposing ecom app to HTTPS, Traefik and cert-manager:
 
-cd ~/k8s-resume-challenge/civo (cloned from htps://github.com/journeyman33/k8s-resume-challenge)
+cd ~/k8s-resume-challenge/kubernetes/civo (cloned from htps://github.com/journeyman33/k8s-resume-challenge)
 k apply -f clusterissuer.yaml
 civo k3s show ecom 
 
@@ -81,9 +81,13 @@ nginx-ingress   <none>   256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com   212.
 curl -k 256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com
 
 
-** civo k3s remove ecom **
+### remove cluster ecom cluster
+civo k3s remove ecom cluster
+nvim  ~/.kube/config (manually delete 'ecom' cluster, context and user sections)
 
-cd ~/k8s-resume-challenge/learning-app-ecommerce
+------------
+## How to build and push tne Dockerfile for Web-app
+cd ~/k8s-resume-challenge/web-app
 Cat Dokcerfile
 
 FROM php:7.4-apache
