@@ -1,8 +1,8 @@
 ---
 layout:      post
-title:       "Civo"
+title:       "cli commands"
 subtitle:    ""
-description: "My reference to civo setup and civo commands"
+description: "My reference to civo setup and civo commands plus docker"
 excerpt: "My reference civo setup and civo commands"
 date:        "2024-03-10"
 author:      "Charles Vosloo"
@@ -86,24 +86,24 @@ civo k3s remove ecom cluster
 nvim  ~/.kube/config (manually delete 'ecom' cluster, context and user sections)
 
 ------------
-## How to build and push tne Dockerfile for Web-app
-cd ~/k8s-resume-challenge/web-app
-Cat Dokcerfile
+## How to build and push Web-app Dockerfile from local environment
+cd ~/k8s-resume-challenge/web-app  
+cat Dokerfile
 
-FROM php:7.4-apache
-RUN docker-php-ext-install mysqli
-COPY . /var/www/html/ 
-EXPOSE 80
-ENV MYSQL_HOST=mysql-service
+FROM php:7.4-apache   
+RUN docker-php-ext-install mysqli   
+COPY ./Web-app /var/www/html/     
+EXPOSE 80    
+ENV MYSQL_HOST=mysql-service    
 
-docker build -t journeyman/ecom-web:v1 .
+docker build -t journeyman/ecom-web:v**3** .
 
-docker run -p 8080:80 journeyman/ecom-web:v1
-docker run --name myweb -it -d  -p 8080:80 journeyman/ecom-web:v1    ( !! )
-docker push journeyman/ecom-web:v1  ( !! )
+docker run -p 8080:80 journeyman/ecom-web:v3 
+docker run --name myweb -it -d  -p 8080:80 journeyman/ecom-web:v1     
+docker push journeyman/ecom-web:v3   
 
-ls ~/k8s-resume-challenge/civo
-❯ ls
+ls ~/k8s-resume-challenge/civo  
+❯ ls  
 certificate.yaml    cm-db.yaml   dp-mysql.yaml      ingress.yaml  website-deployment.yaml  webste-service.yaml
 clusterissuer.yaml  cm-env.yaml  ingress-http.yaml  nginx.yaml    website-service.yaml
 

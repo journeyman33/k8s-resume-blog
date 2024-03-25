@@ -6,13 +6,27 @@ date:       "2024-03-05"
 author:     "Charles Vosloo"
 image:      "img/k8s-resume-banner.png"
 ---
+### Architecture
+
+[diagram]
+
+key guide ?
+This is an ideal.  
+Not using gihub actions but using git.  
+public IP + firewall > LB = the entrypoint.  
+The last thing I finished.  
+
+
+### Civo Cloud Kubernetes
+
 ![screenshot](/img/discord-chat.png)
 
 
 I once suggested using civo on a new project and was immediately dismissed in favour of aws. A civo managed kubernetes cluster costs less than half of the the price of the three hyperscalers EKS, AKS and GKE. So, I get to try it out now. 
 
-I am not sure what he meant by "might not have all the features"
+> "No guarantees it will have all the features you need"
 
+What features did I find missing? 
 
 <!-- ## Screenshots
 

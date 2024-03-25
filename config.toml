@@ -21,7 +21,7 @@ home = ["HTML", "RSS", "Algolia"]
   upstreamAttribution = true
 
   image_404 = "img/404-bg.jpg"
-  title_404 = "Not Found :("
+  title_404 = "Not Found :"
   omit_categories = false
 
   # leancloud storage for page view counter
@@ -36,9 +36,8 @@ home = ["HTML", "RSS", "Algolia"]
   algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Devops Engineer, Open Source Enthusiast and Hiker"
-  #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_avatar = "img/eye_of_africa_pic2.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_about_description = "Charles Vosloo.  I am interested in Kubernetes, Devops, Opensource, Outdoors and family."
+  sidebar_avatar = "img/eye_of_africa_pic3.png" 
 
   featured_tags = true 
   featured_condition_size = 1 
