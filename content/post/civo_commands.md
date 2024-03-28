@@ -4,7 +4,7 @@ title:       "civo commands"
 subtitle:    ""
 description: "My reference to civo setup and civo commands plus"
 excerpt: "My reference civo setup and civo commands"
-date:        "2024-03-10"
+date:        "2024-03-04"
 author:      "Charles Vosloo"
 image:       ""
 tags:  

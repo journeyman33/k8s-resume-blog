@@ -2,7 +2,7 @@
 title:       "Week Two"
 subtitle:    "Kubernetes Management and scaling"
 description: ""
-date:        "2024-03-04"
+date:        "2024-03-15"
 author:      "Charles Vosloo"
 image:       ""
 tags:        ["tag1", "tag2"]

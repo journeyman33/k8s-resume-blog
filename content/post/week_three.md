@@ -2,7 +2,7 @@
 title:       "Week Three"
 subtitle:    "Kubernetes automation and persistance"
 description: ""
-date:        "2024-03-05"
+date:        "2024-03-20"
 author:      "Charles Vosloo"
 image:       ""
 tags:        ["tag1", "tag2"]
