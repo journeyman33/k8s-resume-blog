@@ -15,7 +15,7 @@ URL: "/2024/03/10/civo_comands/"
 ## civo cli commands
 
 
-### civo aliases 
+### some civo aliases 
 kubernetes = k3s, k8s, kube  
 applications = apps, addons, marketplace  
 save = save, add, store, create, new
@@ -28,7 +28,7 @@ Get API key from civo Dashboard > login at https://dashboard.civo.com/
 civo apikey add my-civo  DAb75..
 civo apikey ls (confirm)
 
-### 1. setup 
+### 1. Setup 
 
 civo kubernetes create ecom --remove-applications=traefik2-nodeport --applications traefik2-loadbalancer,cert-manager --cni-plugin cilium  -n 1 -s g4s.kube.medium create-firewall  --wait --save --merge --switch
 
@@ -38,19 +38,19 @@ k ctx    (confirm current cluster with krew plugin)
 kubectl create namespace ecom 
 k ns ecom (krew ns plugin)
 
-### 2. cofirm what is installed:
+### 2. Cofirm what is installed:
 civo k3s apps ls  (list everyting in the marketplace)
 civo k3s apps show cert-manager ecom        
 civo k3s apps show traefik2-loadbalancer ecom      
 civo loadbalancer show civo-kube-system-traefik  
 civo k3s show ecom  (everything inside the ecom cluster)
 
-### 3. add a marketplace apps to existing ecom cluster...  ( not using !)
-civo k3s apps add mysql --cluster ecom 
-civo k3s show ecom             
-civo k3s apps show mysql ecom   
+### 3. Add additional marketplace apps to existing ecom cluster...  
+civo k3s apps add argocd --cluster ecom   
+civo k3s show ecom               
+civo k3s apps show argocd ecom     
 
-## Exposing ecom app to HTTPS, Traefik and cert-manager:
+### Exposing ecom app to HTTPS, Traefik and cert-manager:
 
 cd ~/k8s-resume-challenge/kubernetes/civo (cloned from htps://github.com/journeyman33/k8s-resume-challenge)
 k apply -f clusterissuer.yaml
