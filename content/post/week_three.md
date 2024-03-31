@@ -11,6 +11,12 @@ categories:  ["Tech" ]
 ## Step 6: Implement Configuration Management
 ### Task: Add a feature toggle to the web application to enable a “dark mode” for the website.
 
+I first attempted this without reading the instructions carefully. It does not ask to create a physical day night switch on the web app to toggle between dark mode and light mode, but rather to create a kubernetes config map to toggle the settings with the default set to dark mode.       
+
+This involves modifying the index.php and editing or creating a custom styles.css file that is not everriden by the Bootstrap framework. I initially thought this requires PHP knowledge, but rather it is run using a javascript function. I was reminded that PHP runs on the backend and Javascript on the frontend in the browser.
+
+-----
+
 Modify the Web Application: Add a simple feature toggle in the application code (e.g., an environment variable FEATURE_DARK_MODE that enables a CSS dark theme).
 Use ConfigMaps: Create a ConfigMap named feature-toggle-config with the data FEATURE_DARK_MODE=true.
 Deploy ConfigMap: Apply the ConfigMap to your Kubernetes cluster.
@@ -18,19 +24,36 @@ Update Deployment: Modify the website-deployment.yaml to include the environment
 Outcome: Your website should now render in dark mode, demonstrating how ConfigMaps manage application features.
 ## Step 7: Scale Your Application
 ### Task: Prepare for a marketing campaign expected to triple traffic.
+Scaling is about increasing or decreasing the number of pods an application runs based on the load. This can be done statically or dynamically:  
 
-Evaluate Current Load: Use kubectl get pods to assess the current number of running pods.
-Scale Up: Increase replicas in your deployment or use kubectl scale deployment/ecom-web --replicas=6 to handle the increased load.
-Monitor Scaling: Observe the deployment scaling up with kubectl get pods.
-Outcome: The application scales up to handle increased traffic, showcasing Kubernetes’ ability to manage application scalability dynamically.
+1. ``` kubectl scale deployment web --replicas=6 ```  
+2. ```kubectl autoscale deployment web --cpu-percent=50 --min=2 --max=10```
+
+What happens when the marketing campaign ends and the traffic to our ecom site drops? Will we remember to run the command to scale the application down?
+
+Clearly the second option is better. 
+
 ## Step 8: Perform a Rolling Update
 ### Task: Update the website to include a new promotional banner for the marketing campaign.
 
-Update Application: Modify the web application’s code to include the promotional banner.
-Build and Push New Image: Build the updated Docker image as yourdockerhubusername/ecom-web:v2 and push it to Docker Hub.
-Rolling Update: Update website-deployment.yaml with the new image version and apply the changes.
-Monitor Update: Use kubectl rollout status deployment/ecom-web to watch the rolling update process.
-Outcome: The website updates with zero downtime, demonstrating rolling updates’ effectiveness in maintaining service availability.
+Rolling updates are a core kubernetes feature: change the image of a running application without experiencing any downtime.
+
+I created a cool banner with the help of canva.com advertising my new favourite cloud provider Civo and added it to the index.php file.
+
+The code base has now changed: The head section has a new style element and the body section has a new image tag ecom-banner2.png. 
+A new version ecom-web:v2 of the image needs to built.  The Dockerfile line  ```COPY ./Web-app/ /var/www/html/``` enables all the new changes. Once pushed to Dockerhub, we can now:  
+
+```kubectl rollout status deployment web```  
+(check the current image)    
+```kubectl set image deployment web web=journeyman/ecom-web:v2```  
+(v2 now will now replace v1)   
+```kubectl rollout undo deployment web```  
+(go back to the previous verison)  
+```kubectl rollout history deployment web```   
+(check the history of image changes)  
+
+
+
 ## Step 9: Roll Back a Deployment
 ### Task: Suppose the new banner introduced a bug. Roll back to the previous version.
 
@@ -41,24 +64,168 @@ Outcome: The application’s stability is quickly restored, highlighting the imp
 ## Step 10: Autoscale Your Application
 ### Task: Automate scaling based on CPU usage to handle unpredictable traffic spikes.
 
-Implement HPA: Create a Horizontal Pod Autoscaler targeting 50% CPU utilization, with a minimum of 2 and a maximum of 10 pods.
-Apply HPA: Execute kubectl autoscale deployment ecom-web --cpu-percent=50 --min=2 --max=10.
-Simulate Load: Use a tool like Apache Bench to generate traffic and increase CPU load.
-Monitor Autoscaling: Observe the HPA in action with kubectl get hpa.
-Outcome: The deployment automatically adjusts the number of pods based on CPU load, showcasing Kubernetes’ capability to maintain performance under varying loads.
+The imperative command:   
+```kubectl autoscale deployment web --cpu-percent=50 --min=2 --max=10```  
+works, but what happens if we want to alter the configuration without issuing a new command? Or maybe we are running a Gitops workflow where kubectl commands are not applied to the cluster? To generate a config file and to add it to the directory that contains our existing yaml manifests files use the following command:  
+
+```kubectl autoscale deploy web --min 2 --max 10 --cpu-percent 50  --dry-run=client -oymal > ~/k8s-resume-challenge/kubernetes/deploy-civo/hpa.yaml```  
+
+On a one a node cluster g4s.kube.small (1 CPU 2 RAM 40 SSD) running our ecom project the CPU clocks in at 86%. This is already in the danger zone. But still, How many concurrent hits would it take to take for the system to fail?
+
+> #### Install Apache Bench (ab)
+> 'ab'= the cli client intalled on the Laptop 
+
+> ```ab -n 1000 -c 10 http://<endpoint_url or IP```
+
+
+
 ## Step 11: Implement Liveness and Readiness Probes
 ### Task: Ensure the web application is restarted if it becomes unresponsive and doesn’t receive traffic until ready.
 
-Define Probes: Add liveness and readiness probes to website-deployment.yaml, targeting an endpoint in your application that confirms its operational status.
-Apply Changes: Update your deployment with the new configuration.
-Test Probes: Simulate failure scenarios (e.g., manually stopping the application) and observe Kubernetes’ response.
-Outcome: Kubernetes automatically restarts unresponsive pods and delays traffic to newly started pods until they’re ready, enhancing the application’s reliability and availability.
+These probes can be added to both the web deployment and the mysql deployment.  
+
+```nvim ~/k8s-resume-challenge/kubernetes/deploy-civo/webiste-deployment.yaml```
+
+```yaml 
+kind: Deployment
+metadata:
+  name: web
+  namespace: ecom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: journeyman/ecom-web:v1
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: web-env-vars
+        - secretRef:
+            name: mysql-secret
+```
+
+
+
+Add to deploy.spec.template.spec.containers:
+```yaml 
+        readinessProbe:
+          httpGet:
+            path: /index.php
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /index.php
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 5
+```
+Although both the readiness and liveness probe do the same thing:  check the existence of /index.php on port 80 on the web container which is inside the web deployment, they however behave differently:  
+> The readines probe checks if the container is ready to serve traffic.  
+If the test fails the container is removed as a valid endpoint   
+
+> the liveness probe checks if the container is still responsive and healthy.  
+If the test fails the container will get restarted
+
+
+```nvim ~/k8s-resume-challenge/kubernetes/deploy-civo/mysql-deployment.yaml```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: ecom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mariadb:lts
+        envFrom:
+        - configMapRef:
+            name: web-env-vars
+        - secretRef:
+            name: mysql-secret
+        volumeMounts:
+        - name: db-load-script-volume
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: db-load-script-volume
+        configMap:
+          name: db-load-script
+```
+Add to deploy.spec.template.spec.containers:
+```yaml
+    readinessProbe:
+      tcpSocket:
+        port: 3306
+      initialDelaySeconds: 5
+      periodSeconds: 5
+    livenessProbe:
+      tcpSocket:
+        port: 3306
+      initialDelaySeconds: 10
+      periodSeconds: 5
+```
+Both the readiness and liveness probe check if the mysql-service is up by performing a tcpSocket check to mysql running on port 3306. 
+
+> The readiness probe ensures that the container is ready to serve traffic.   
+If the test fails no new request will be accepted
+
+> The liveness probe checks if the container is still responsive and healthy.    
+If the test fails the pod will get restarted.
+
+
+
+
+
 ## Step 12: Utilize ConfigMaps and Secrets
 ### Task: Securely manage the database connection string and feature toggles without hardcoding them in the application.
 
-Create Secret and ConfigMap: For sensitive data like DB credentials, use a Secret. For non-sensitive data like feature toggles, use a ConfigMap.
-Update Deployment: Reference the Secret and ConfigMap in the deployment to inject these values into the application environment.
-Outcome: Application configuration is externalized and securely managed, demonstrating best practices in configuration and secret management.
+I created 3 configuration files to store sensitive and non sensitive infomation used to connect to and populate the mysql database:
+
+> 1. mysql-cm-db-load-scipt.yaml - database content
+> 2. mysql-cm.yaml - for the myaql host, port and database
+> 3. mysql-secret.yaml - for the mysql user,password and root password.
+  
+web-env-vars and mysql-secret were added to web deployment as a config map and a secret.  
+db-load-script-volume got added to mysql deployment as a config map volume.
+
+I ran these kubectl commands and followed them with kubectl apply -f 
+            
+> 1. kubectl create configmap db-load-script --namespace=ecom   --from-file=db-load-script.sql=./db-load-script.sql   
+--dry-run=client -oyaml > mysql-cm-db-load-scipt.yaml  
+
+> 2. kubectl create configmap web-env-vars --namespace=ecom   --from-literal=MYSQL_HOST=mysql-service --from-literal=MYSQL_PORT=3306  --from-literal=MYSQL_DATABASE=ecomdb  
+--dry-run=client -oyaml > mysql-cm.yaml  
+
+> 3.  kubectl create secret generic mysql-secret --namespace=ecom   --from-literal=MYSQL_USER=user --from-literal=MYSQL_PASSWORD=secret    --from-literal=MYSQL_ROOT_PASSWORD=secret  
+--dry-run=client -oyaml > mysql-secret.yaml  
+
+
+
+
+
+
+
 ## Step 13: Document Your Process
 ### Finalize Your Project Code: Ensure your project is complete and functioning as expected. Test all features locally and document all dependencies clearly.
 Create a Git Repository: Create a new repository on your preferred git hosting service (e.g., GitHub, GitLab, Bitbucket).

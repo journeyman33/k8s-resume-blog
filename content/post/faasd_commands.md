@@ -2,7 +2,7 @@
 title:       "Faasd"
 subtitle:    ""
 description: "My reference to OpenFaas(Faasd) commands"
-date:        "2024-03-04"
+date:        "2024-03-03d"
 author:      "Charles Vosloo"
 image:       ""
 tags:        ["mynotes"]
