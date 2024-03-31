@@ -9,7 +9,7 @@ tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]
 ---
 ### Extra Credit
-##### Three tasks were sugggested here:    
+##### Three tasks were suggested here:        
      
      
 
@@ -18,7 +18,7 @@ categories:  ["Tech" ]
 3. Implement Basic CI/CD Pipeline  
 4. <span style="color:green;">**Make use of Serverless**</span> 
 
-#### 2 Persistant Storage
+#### 2 Persistent Storage
 
 When the mysql deployment pods go down due to restarts, updates, or scaling the data is lost.  Therefore we want to persist the contents of the container directory  ***/var/lib/mysql*** with outside storage.    
 
@@ -33,7 +33,7 @@ provisioner: csi.civo.com
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 ```
-The presence of a StorageClass configuration indicates that Civo Cloud offers a default persistent storage solution to dynamically provision storage with PVs (Persistnat volumes) and PVC's (Persistant Volume Claims). 
+The presence of a StorageClass configuration indicates that Civo Cloud offers a default persistent storage solution to dynamically provision storage with PVs (Persistent volumes) and PVC's (Persistent Volume Claims). 
 
 Here is how it is done:
 
@@ -86,16 +86,16 @@ mysql-vol   Bound    pvc-2f330444-      4Gi        RWO            civo-volume   
 
 #### 4 Serverless
 
-Actually, I added the fourth option, Make use of Serverles. In the previous version of this challange one of the steps was to add a visitor counter to the website using the cloud provider's serverless function which would be AWS Lambda, Google Cloud Functions or Azure functions. I wanted to do something similar **using non proprietary solutions.** On our ecommerce site additional features like email notifications, image procesing, payment processing, inventory managemnet or any kind of analytics could probably more easily be carried out using serverless or rather functions as a service. Just to prove the concept, my goal was to add the day-night toggle swithch as a severless function, but that didn't pan out.
+Actually, I added the fourth option, Make use of Serverless. In the previous version of this challenge one of the steps was to add a visitor counter to the website using the cloud provider's serverless function which would be AWS Lambda, Google Cloud Functions or Azure functions. I wanted to do something similar **using non proprietary solutions.** On our ecomerce site additional features like email notifications, image processing, payment processing, inventory management or any kind of analytics could probably more easily be carried out using serverless or rather functions as a service. Just to prove the concept, my goal was to add the day-night toggle switch as a serverless function, but that didn't pan out.
 
 
-How can one implement opensource Severless on civo cloud?
+How can one implement Open source Serverless on civo cloud?
 1. OpenFunction
 2. OpenFaas
 
 OpenFunction uses Knative, a comprehensive more complex solution that requires a control plain  kubernetes cluster with a minimum of 2 nodes, 4CPU and 8GB memory plus Istio running. 
 
-Civo is a dedicated kubernetes (k3s) cloud provider which embraces popular opensource CNCF products like OpenFaaS:  
+Civo is a dedicated kubernetes (k3s) cloud provider which embraces popular Open source CNCF products like OpenFaaS:  
 
 > "a Function as a Service serverless framework that deploys event-driven functions and microservices to Kubernetes in the form of containers." 
 
@@ -104,7 +104,7 @@ Civo is a dedicated kubernetes (k3s) cloud provider which embraces popular opens
 There are two ways to run OpenFaas:
 1. faas-netes (on a kubernetes cluster)
 ![faas-netes](/img/of-workflow.png)
-OpenFaas makes use of the PLONK stack. While the LAMP stack (linux, apache, mysql, php) is used by our ecommerce site, The JAM stack (javascript, API, markup) is used by this hugo blog, the PLONK stack is comprised of:  
+OpenFaas makes use of the PLONK stack. While the LAMP stack (linux, apache, mysql, php) is used by our ecomerce site, The JAM stack (javascript, API, markup) is used by this hugo blog, the PLONK stack is comprised of:  
 >>Prometheus - metrics and time-series  
 >>Linkerd - service mesh   
 >>OpenFaaS - management and auto-scaling of compute - PaaS/FaaS   
@@ -116,7 +116,7 @@ The second option, which I have set up, is a scaled down version of the above: t
 2. faasd (on a VM running containerd)  
 ![faasd](/img/faasd-wf.png)
 
-Instead of runnning it on a VM I chose to run the faasd server On Prem, on a raspberry pi. Faasd, a light weight version of OpenFaas, uses Containerd instead of kubernetes which results in it running faster.  This is procedure is explained by the creator, Alex Ellis in his book, [Serverless for everyone else](https://openfaas.gumroad.com/l/serverless-for-everyone-else)
+Instead of running it on a VM I chose to run the faasd server On Prem, on a raspberry pi. Faasd, a light weight version of OpenFaas, uses Containerd instead of kubernetes which results in it running faster.  This is procedure is explained by the creator, Alex Ellis in his book, [Serverless for everyone else](https://openfaas.gumroad.com/l/serverless-for-everyone-else)
 
   
 The downside: This setup has a single point of failure. However, there are no cloud fees, and the raspberry pi address running on my local LAN, is routable externally thanks to the installation of inlets. The other problem particular to South Africa are daily scheduled power outages. After about a day without power my backup system will fail, the cell phone towers follow, and then not only can the server go down but the internet too.

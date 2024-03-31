@@ -13,15 +13,9 @@ categories:  ["Tech" ]
 
 I first attempted this without reading the instructions carefully. It does not ask to create a physical day night switch on the web app to toggle between dark mode and light mode, but rather to create a kubernetes config map to toggle the settings with the default set to dark mode.       
 
-This involves modifying the index.php and editing or creating a custom styles.css file that is not everriden by the Bootstrap framework. I initially thought this requires PHP knowledge, but rather it is run using a javascript function. I was reminded that PHP runs on the backend and Javascript on the frontend in the browser.
+This involves modifying the index.php and editing or creating a custom styles.css file that is not overriden  by the Bootstrap framework. I initially thought this requires PHP knowledge, but rather it is run using a javascript function. I was reminded that PHP runs on the backend and Javascript on the frontend in the browser.
 
------
 
-Modify the Web Application: Add a simple feature toggle in the application code (e.g., an environment variable FEATURE_DARK_MODE that enables a CSS dark theme).
-Use ConfigMaps: Create a ConfigMap named feature-toggle-config with the data FEATURE_DARK_MODE=true.
-Deploy ConfigMap: Apply the ConfigMap to your Kubernetes cluster.
-Update Deployment: Modify the website-deployment.yaml to include the environment variable from the ConfigMap.
-Outcome: Your website should now render in dark mode, demonstrating how ConfigMaps manage application features.
 ## Step 7: Scale Your Application
 ### Task: Prepare for a marketing campaign expected to triple traffic.
 Scaling is about increasing or decreasing the number of pods an application runs based on the load. This can be done statically or dynamically:  
@@ -29,7 +23,7 @@ Scaling is about increasing or decreasing the number of pods an application runs
 1. ``` kubectl scale deployment web --replicas=6 ```  
 2. ```kubectl autoscale deployment web --cpu-percent=50 --min=2 --max=10```
 
-What happens when the marketing campaign ends and the traffic to our ecom site drops? Will we remember to run the command to scale the application down?
+What happens when the marketing campaign ends and the traffic to our ecomerce site drops? Will we remember to run the command to scale the application down?
 
 Clearly the second option is better. 
 
@@ -48,7 +42,7 @@ A new version ecom-web:v2 of the image needs to built.  The Dockerfile line  ```
 ```kubectl set image deployment web web=journeyman/ecom-web:v2```  
 (v2 now will now replace v1)   
 ```kubectl rollout undo deployment web```  
-(go back to the previous verison)  
+(go back to the previous version)  
 ```kubectl rollout history deployment web```   
 (check the history of image changes)  
 
@@ -66,11 +60,11 @@ Outcome: The application’s stability is quickly restored, highlighting the imp
 
 The imperative command:   
 ```kubectl autoscale deployment web --cpu-percent=50 --min=2 --max=10```  
-works, but what happens if we want to alter the configuration without issuing a new command? Or maybe we are running a Gitops workflow where kubectl commands are not applied to the cluster? To generate a config file and to add it to the directory that contains our existing yaml manifests files use the following command:  
+works, but what happens if we want to alter the configuration without issuing a new command? Or maybe we are running a GitOps workflow where kubectl commands are not applied to the cluster? To generate a config file and to add it to the directory that contains our existing yaml manifests files use the following command:  
 
 ```kubectl autoscale deploy web --min 2 --max 10 --cpu-percent 50  --dry-run=client -oymal > ~/k8s-resume-challenge/kubernetes/deploy-civo/hpa.yaml```  
 
-On a one a node cluster g4s.kube.small (1 CPU 2 RAM 40 SSD) running our ecom project the CPU clocks in at 86%. This is already in the danger zone. But still, How many concurrent hits would it take to take for the system to fail?
+On a one a node cluster g4s.kube.small (1 CPU 2 RAM 40 SSD) running our ecomerce project the CPU clocks in at 86%. This is already in the danger zone. But still, How many concurrent hits would it take to take for the system to fail?
 
 > #### Install Apache Bench (ab)
 > 'ab'= the cli client intalled on the Laptop 
@@ -84,7 +78,7 @@ On a one a node cluster g4s.kube.small (1 CPU 2 RAM 40 SSD) running our ecom pro
 
 These probes can be added to both the web deployment and the mysql deployment.  
 
-```nvim ~/k8s-resume-challenge/kubernetes/deploy-civo/webiste-deployment.yaml```
+```nvim ~/k8s-resume-challenge/kubernetes/deploy-civo/website-deployment.yaml```
 
 ```yaml 
 kind: Deployment
@@ -131,7 +125,7 @@ Add to deploy.spec.template.spec.containers:
           periodSeconds: 5
 ```
 Although both the readiness and liveness probe do the same thing:  check the existence of /index.php on port 80 on the web container which is inside the web deployment, they however behave differently:  
-> The readines probe checks if the container is ready to serve traffic.  
+> The readiness probe checks if the container is ready to serve traffic.  
 If the test fails the container is removed as a valid endpoint   
 
 > the liveness probe checks if the container is still responsive and healthy.  
@@ -200,10 +194,10 @@ If the test fails the pod will get restarted.
 ## Step 12: Utilize ConfigMaps and Secrets
 ### Task: Securely manage the database connection string and feature toggles without hardcoding them in the application.
 
-I created 3 configuration files to store sensitive and non sensitive infomation used to connect to and populate the mysql database:
+I created 3 configuration files to store sensitive and non sensitive information used to connect to and populate the mysql database:
 
-> 1. mysql-cm-db-load-scipt.yaml - database content
-> 2. mysql-cm.yaml - for the myaql host, port and database
+> 1. mysql-cm-db-load-script.yaml - database content
+> 2. mysql-cm.yaml - for the mysql host, port and database
 > 3. mysql-secret.yaml - for the mysql user,password and root password.
   
 web-env-vars and mysql-secret were added to web deployment as a config map and a secret.  
@@ -212,7 +206,7 @@ db-load-script-volume got added to mysql deployment as a config map volume.
 I ran these kubectl commands and followed them with kubectl apply -f 
             
 > 1. kubectl create configmap db-load-script --namespace=ecom   --from-file=db-load-script.sql=./db-load-script.sql   
---dry-run=client -oyaml > mysql-cm-db-load-scipt.yaml  
+--dry-run=client -oyaml > mysql-cm-db-load-script.yaml  
 
 > 2. kubectl create configmap web-env-vars --namespace=ecom   --from-literal=MYSQL_HOST=mysql-service --from-literal=MYSQL_PORT=3306  --from-literal=MYSQL_DATABASE=ecomdb  
 --dry-run=client -oyaml > mysql-cm.yaml  
@@ -225,9 +219,3 @@ I ran these kubectl commands and followed them with kubectl apply -f
 
 
 
-
-## Step 13: Document Your Process
-### Finalize Your Project Code: Ensure your project is complete and functioning as expected. Test all features locally and document all dependencies clearly.
-Create a Git Repository: Create a new repository on your preferred git hosting service (e.g., GitHub, GitLab, Bitbucket).
-Push Your Code to the Remote Repository
-Write Documentation: Create a README.md or a blog post detailing each step, decisions made, and how challenges were overcome.

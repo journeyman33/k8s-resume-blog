@@ -18,7 +18,7 @@ I once suggested using Civo on a new project and was immediately dismissed in fa
 
 What features are missing? 
 
-Compared to AWS I am sure the list is long: networking and security features, the IAM service, CloudTrail, managed databases (Amazon RDS, DynamoDB), S3 storage. Plus the AWS SLA (Service level agreement) guarantees High Availablity and reliability for top-end enterpise production workloads. AWS Lambda (serverless) ?  
+Compared to AWS I am sure the list is long: networking and security features, the IAM service, CloudTrail, managed databases (Amazon RDS, DynamoDB), S3 storage. Plus the AWS SLA (Service level agreement) guarantees High Availability and reliability for top-end enterprise production workloads. AWS Lambda (serverless) ?  
 
 > But, isn't Kubernetes ***the*** platform of the cloud?  
 
@@ -30,7 +30,7 @@ Compared to AWS I am sure the list is long: networking and security features, th
 A convenient next step after setting up git and github is to use Github Actions as part of the CI/CD implementation to automate the build process. The workflow arrows on this diagram are a best practice goal.   
 <!-- After that, setting up Flux or ArgoCD provides a full CI/CD GitOps environment. -->
 
-While the mysql image, mariadb:lts remains fixed, it is the ecom-web image that gets  continously built.   
+While the mysql image, mariadb:lts remains fixed, it is the ecom-web image that gets  continuously built.   
  
 <!-- The [Docker commands](docker_commands.md) in the MYNOTES menus shows the process of building a new ecom-web image and pushing it to Gihub.  
 
@@ -48,36 +48,36 @@ Github Acitons can automate this process. -->
 > v3 - add integration to OpenFaas - Faasd server  
 
 
-The installation of applications from the Civo Marketplace is very usefull. The civo Marketplace can be found on the UI Dashboard or on the client CLI where you can get a description of each application or get a list of the application with:  
+The installation of applications from the Civo Marketplace is very useful. The civo Marketplace can be found on the UI Dashboard or on the client CLI where you can get a description of each application or get a list of the application with:  
 
 ```civo kubernetes applications ls ```
 ![civo_applications](/img/civo_applications2.png)
 
 You can install applications with: 
 
-``` civo kubernetes applications add cert-manager traefic2-loadbalancer --clster ecom ```  
+``` civo kubernetes applications add cert-manager traefic2-loadbalancer --cluster ecom ```  
 
-Leveraging Helm, everything then gets integrated into the existing cluster using default or sensible defaults and the idea at *most* is that it works seemlessly. <!--Helm is used under the hood.-->  
+Leveraging Helm, everything then gets integrated into the existing cluster using default or sensible defaults and the idea at *most* is that it works seamlessly. <!--Helm is used under the hood.-->  
 <!-- , but the integration is smoother than with vanilla helm. -->
 
 
 ### Improving the environment
 
-What is wrong with our ecommerce application?  
+What is wrong with our ecomerce application?  
     
 ##### Security  
 RBAC (Role-Based Access Control) is not set up. All pods and services within the cluster can communicate with each other without any restrictions.
 
-No Network Policies defined where ingress and egress traffic based on IP addresses, ports, or labels are restrcitecd to minimize the attacks on the network.
+No Network Policies defined where ingress and egress traffic based on IP addresses, ports, or labels are restricted to minimize the attacks on the network.
 
 No third party solutions ues to manage secrets securely.
 
 ##### Devops Best Practices
 
 No argocd or flux installed: We are not applying GitOps.    
-No real Infrasturcture as code system used like Terrafrom or Crossplane.   
-No CI/CD pipeline set up with Github actions, Jemkins, Gitlab or Azure Devops.  
-No monittoring and observability tools set up.    
+No real Infrastructure as code system used like Terraform or Crossplane.   
+No CI/CD pipeline set up with Github actions, Jenkins, Gitlab or Azure Devops.  
+No monitoring and observability tools set up.    
 
 So, what's next?  
 
@@ -95,7 +95,7 @@ Kubernetes and the Kuberetes ecosystem has many moving parts.  Putting them all 
 
 This one line civo installation command, achieves the goal: 
 
-``` civo kubernetes applications add kubefirst --clster ecom ```  
+``` civo kubernetes applications add kubefirst --cluster ecom ```  
 
 We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required for any running system. However, Kubefirst also has it's own 'marketplace' which means different parts are interchangable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectual diagram showing the defaults. Many moving parts to control many moving parts.        
 

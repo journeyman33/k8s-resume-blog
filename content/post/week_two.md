@@ -9,7 +9,7 @@ tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]
 ---
 ## Step 3: Set Up Kubernetes on a Public Cloud Provider
-Since it takes less than 2 minutes it was my first step. This command being the final iteration:
+Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:
 
 ```civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer,cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch```
 
@@ -31,11 +31,11 @@ I am not very good at remembering kubernetes yaml, to get a template, I default 
 
    - image: journeyman/ecom-web:v1  
    - deployment name: web   
-   - a configmap and secret containing values needs to pass to the deloyment  
+   - a configmap and secret containing values needs to pass to the deployment  
 
 Use the following imperative command to create a declarative template:  
 
-```kubectl -n ecom create deployment web --image journeyman/ecom-web:v1 --dry-run=client -oyaml > website-deployment.ymal```    
+```kubectl -n ecom create deployment web --image journeyman/ecom-web:v1 --dry-run=client -oyaml > website-deployment.yaml```    
 
 All that remains is to figure out the configmap spec and the secret spec when editing the website-deployment.ymal, then run:
 

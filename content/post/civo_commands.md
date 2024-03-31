@@ -76,7 +76,7 @@ k apply -f ingress.yaml
 #### Apply the manifests
 
 ❯ ls  ~/k8s-resume-challenge/kubernetes/deploy-civo  
-mysql-cm-db-laod-scirpt.yaml  
+mysql-cm-db-load-script.yaml  
 mysql-deployment.yaml  
 mysql-service.yaml    
 website-service.yaml  
@@ -89,7 +89,7 @@ website-deployment.yaml
 ### Place domain name in browser  e.g.
 256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com
 
-### Or test the domaain name  on cli
+### Or test the domain name  on cli
 curl -k 256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com
 
 ### Tear down 'ecom' cluster
