@@ -66,12 +66,22 @@ works, but what happens if we want to alter the configuration without issuing a 
 
 On a one a node cluster g4s.kube.small (1 CPU 2 RAM 40 SSD) running our ecomerce project the CPU clocks in at 86%. This is already in the danger zone. But still, How many concurrent hits would it take to take for the system to fail?
 
-> #### Install Apache Bench (ab)
-> 'ab'= the cli client intalled on the Laptop 
+###### Install Apache Bench (ab)  
+'ab'= the cli tool
 
-> ```ab -n 1000 -c 10 http://<endpoint_url or IP```
+> ```ab -n 1000 -c 10 http://956e33be-b7cf-4bbd-85b8-b8a2779c386a.lb.civo.com/``` 
 
+One thousand hits with a concurrency of 10 crashes the server.
 
+The remedy:   
+**Create a total of 3 nodes:**  
+civo kubernetes node-pool scale ecom 824. --nodes   
+**Create a fourth medium size node:**   
+civo k8s node-pool create ecom --size g4s.kube.medium     
+civo k8s node-pool ls ecom    
+**Delete one of the small nodes**   
+civo k8s node-pool instance-delete ecom --node-pool-id 824.. --instance-id 880...  
+  
 
 ## Step 11: Implement Liveness and Readiness Probes
 ### Task: Ensure the web application is restarted if it becomes unresponsive and doesn’t receive traffic until ready.
