@@ -10,9 +10,9 @@
     <atom:link href="https://journeyman33.github.io/k8s-resume-blog/categories/mynotes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Civo Commands</title>
-      <link>https://journeyman33.github.io/k8s-resume-blog/2024/03/10/civo_comands/</link>
+      <link>https://journeyman33.github.io/k8s-resume-blog/civo_commands/</link>
       <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://journeyman33.github.io/k8s-resume-blog/2024/03/10/civo_comands/</guid>
+      <guid>https://journeyman33.github.io/k8s-resume-blog/civo_commands/</guid>
       <description>Civo: Setup and Teardown Some civo aliases kubernetes = k3s, k8s, kube&#xA;applications = apps, addons, marketplace&#xA;save = save, add, store, create, new&#xA;ecom = the name of the cluster&#xA;ecom = the name of the kubernetes namespace used&#xA;Set up Civo api key (done once) Get API key from civo Dashboard &amp;gt; login at https://dashboard.civo.com/&#xA;On laptop brew install civo&#xA;civo apikey add my-civo DAb75..&#xA;civo apikey ls (confirm)</description>
     </item>
     <item>

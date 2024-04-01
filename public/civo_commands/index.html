@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="Week One" />
-    <meta property="og:title" content="Week One" />
-    <meta property="twitter:title" content="Week One" />
+    <meta name="title" content="Civo Commands" />
+    <meta property="og:title" content="Civo Commands" />
+    <meta property="twitter:title" content="Civo Commands" />
     
 
     
-    <meta name="description" content="spec | two">
-    <meta property="og:description" content="spec | two" />
-    <meta property="twitter:description" content="spec | two" />
+    <meta name="description" content="My reference to civo setup and civo commands plus">
+    <meta property="og:description" content="My reference to civo setup and civo commands plus" />
+    <meta property="twitter:description" content="My reference to civo setup and civo commands plus" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Microservice">
     <link rel="shortcut icon" href="/k8s-resume-blog/img/favicon.ico">
 
-    <title>Week One | spec | journeyman Blog</title>
+    <title>Civo Commands | spec | journeyman Blog</title>
 
-    <link rel="canonical" href="/k8s-resume-blog/post/week_one/">
+    <link rel="canonical" href="/k8s-resume-blog/civo_commands/">
 
     
     
@@ -174,17 +174,13 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/tag1" title="tag1">
-                            tag1
-                        </a>
-                        
-                        <a class="tag" href="/tags/tag2" title="tag2">
-                            tag2
+                        <a class="tag" href="/tags/mynotes" title="mynotes">
+                            mynotes
                         </a>
                         
                     </div>
-                    <h1>Week One</h1>
-                    <h2 class="subheading">dockerize the eccomerce site</h2>
+                    <h1>Civo Commands</h1>
+                    <h2 class="subheading"></h2>
                     <span class="meta">
                         
                             Posted by 
@@ -192,7 +188,7 @@
                                 Charles Vosloo
                              
                             on 
-                            Tuesday, March 5, 2024
+                            Monday, March 4, 2024
                             
                             
                             
@@ -218,34 +214,78 @@
                 post-container">
 
                 
-                <h2 id="step-1-certification">Step 1: Certification</h2>
-<p>The Certified Kubernetes Application Developer (CKAD) course is a great resource. Also from Kodekloud, the Ultimate Certified Kubernetes CKAD mock exams was what I enjoyed the most.  I completed the CKA on 26 may 2021 and the CKS on 18 Nov 2021.
-
-  <img src="/img/certificates.png" alt="cka">
-
-</p>
-<!-- raw HTML omitted -->
-<h2 id="step-2-containerize-your-e-commerce-website-and-database">Step 2: Containerize Your E-Commerce Website and Database</h2>
-<h3 id="a-web-application-containerization">A. Web Application Containerization</h3>
-<p>The first step was to set up civo and kubectl cli client running on ubuntu Windows WSL running with Docker Desktop installed.</p>
-<p>There are two application to deploy to Kubernetes, which I call web and mysql</p>
-<ol>
-<li>Web-app (the &rsquo;learning-app-ecomerce  site cloned from kodekloudhub)</li>
-<li>mariadb:lts (pulled form DockerHub)</li>
-</ol>
-<p>The first needs containerizing:</p>
-<p><code>docker build -t journeyman/ecom-web:v1</code></p>
-<p>I used the following Dockerfile, arrived at through trial and error:</p>
-<pre tabindex="0"><code class="language-FROM" data-lang="FROM">RUN docker-php-ext-install pdo pdo_mysql mysqli
-WORKDIR /var/www/html
-COPY  ./Web-app/ /var/www/html/
-EXPOSE 80
-CMD [&#34;/usr/sbin/apache2ctl&#34;, &#34;-D&#34;, &#34;FOREGROUND&#34;]
-</code></pre><p>I initially included in the line:</p>
-<p><code>COPY ./db-load-script.sql /docker-entrypoint-initdb.d/</code></p>
-<p>but then pulled it because the task is to run this database initialization script, which populates the database, (db-load-script.sql) as a Kubernetes configMap.</p>
-<p>For mysql to communicate with the PHP website, requires default password(s) and usernames, which as a best practice, is not a good idea to hard code into the Dockefile or environment variables. Therefore I didn&rsquo;t wait for step 12 to add another configmap for the mysql host, port and database and to add a kubernetes secret for the mysql user,password and root password.</p>
-<p>The other basic security measure is to put the project in a namespace.</p>
+                <h3 id="civo-setup-and-teardown">Civo: Setup and Teardown</h3>
+<h3 id="some-civo-aliases">Some civo aliases</h3>
+<p>kubernetes = k3s, k8s, kube<br>
+applications = apps, addons, marketplace<br>
+save = save, add, store, create, new</p>
+<p>ecom = the name of the cluster<br>
+ecom = the name of the kubernetes namespace used</p>
+<h3 id="set-up-civo-api-key-done-once">Set up Civo api key (done once)</h3>
+<p>Get API key from civo Dashboard &gt; login at <a href="https://dashboard.civo.com/">https://dashboard.civo.com/</a></p>
+<h4 id="on-laptop">On laptop</h4>
+<p>brew install civo<br>
+civo apikey add my-civo  DAb75..<br>
+civo apikey ls (confirm)</p>
+<h3 id="setup">Setup</h3>
+<blockquote>
+<p>civo kubernetes create ecom &ndash;remove-applications=traefik2-nodeport &ndash;applications traefik2-loadbalancer,cert-manager &ndash;cni-plugin cilium  -n 1 -s g4s.kube.medium create-firewall  &ndash;wait &ndash;save &ndash;merge &ndash;switch</p>
+</blockquote>
+<p><code>civo kubernetes config ecom --save</code> (adds kubeconfig to ~/.kube/config)<br>
+The flags used above <code>--save --merge --switch</code> do the same.<br>
+<code>k ctx</code> (confirm the current cluster is &rsquo;ecom&rsquo; with kubectl ctx krew plugin)</p>
+<p><code>kubectl create namespace ecom</code><br>
+<code>k ns ecom</code> (set namespace using the kubectl ns krew plugin)</p>
+<h3 id="cofirm-what-is-installed">Cofirm what is installed:</h3>
+<p><code>civo k3s apps ls</code>  (list everyting in the marketplace)
+civo k3s apps show cert-manager ecom     <br>
+civo k3s apps show traefik2-loadbalancer ecom   <br>
+civo loadbalancer show civo-kube-system-traefik<br>
+<code>civo k3s show ecom</code>  (everything inside the ecom cluster)</p>
+<h3 id="add-additional-marketplace-apps-to-existing-ecom-cluster-skip">Add additional marketplace apps to existing ecom cluster (skip)</h3>
+<p>civo k3s apps add argocd &ndash;cluster ecom<br>
+civo k3s show ecom            <br>
+civo k3s apps show argocd ecom</p>
+<h3 id="exposing-ecom-to-https-traefik-and-cert-manager">Exposing ecom to HTTPS, Traefik and cert-manager:</h3>
+<blockquote>
+<p>cd ~/k8s-resume-challenge/kubernetes/civo<br>
+(cloned from htps://github.com/journeyman33/k8s-resume-challenge)<br>
+k apply -f clusterissuer.yaml<br>
+civo k3s show ecom</p>
+</blockquote>
+<blockquote>
+<h4 id="from-output-get-dns-name-and-place-it-in-both-commonname-and-dnsnames-in-the-certificationyaml-file">From output get DNS name and place it in both commonName and dnsNames in the certification.yaml file</h4>
+</blockquote>
+<blockquote>
+<p>vim certification.yaml   <br>
+k apply -f certification.yaml</p>
+</blockquote>
+<blockquote>
+<h3 id="match-again-the-dns-name-and-place-it-in-both-the-host-and-hosts-section-of-ingressyaml">Match again the DNS name and place it in both the host and hosts section of ingress.yaml</h3>
+<p>vim ingress.yaml<br>
+k apply -f ingress.yaml</p>
+</blockquote>
+<blockquote>
+<p>k get ing (confirm)</p>
+</blockquote>
+<h4 id="apply-the-manifests">Apply the manifests</h4>
+<p>❯ ls  ~/k8s-resume-challenge/kubernetes/deploy-civo<br>
+mysql-cm-db-load-script.yaml<br>
+mysql-deployment.yaml<br>
+mysql-service.yaml <br>
+website-service.yaml<br>
+mysql-cm.yaml<br>
+mysql-secret.yaml     <br>
+website-deployment.yaml</p>
+<p><code>K apply -f ~/k8s-resume-challenge/kubernetes/deploy-civo/</code></p>
+<h3 id="place-domain-name-in-browser--eg">Place domain name in browser  e.g.</h3>
+<p>256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com</p>
+<h3 id="or-test-the-domain-name--on-cli">Or test the domain name  on cli</h3>
+<p>curl -k 256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com</p>
+<h3 id="tear-down-ecom-cluster">Tear down &rsquo;ecom&rsquo; cluster</h3>
+<p><code>civo k3s remove ecom cluster</code><br>
+<code>nvim  ~/.kube/config</code><br>
+(manually delete &rsquo;ecom&rsquo; lines under <em>cluster</em>, <em>context</em> and <em>user</em> section)</p>
 
 
                 
@@ -295,13 +335,13 @@ CMD [&#34;/usr/sbin/apache2ctl&#34;, &#34;-D&#34;, &#34;FOREGROUND&#34;]
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/k8s-resume-blog/civo_commands/" data-toggle="tooltip" data-placement="top" title="Civo Commands">&larr;
+                        <a href="/k8s-resume-blog/post/docker_commands/" data-toggle="tooltip" data-placement="top" title="Docker Commands">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/k8s-resume-blog/post/week_two/" data-toggle="tooltip" data-placement="top" title="Week Two">Next
+                        <a href="/k8s-resume-blog/post/week_one/" data-toggle="tooltip" data-placement="top" title="Week One">Next
                             Post &rarr;</a>
                     </li>
                     
