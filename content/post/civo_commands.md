@@ -10,7 +10,7 @@ image:       ""
 tags:  
    - mynotes
 categories:  ["mynotes" ]
-URL: "/2024/03/10/civo_comands/"
+URL: "civo_commands/"
 ---
 ### Civo: Setup and Teardown 
 
