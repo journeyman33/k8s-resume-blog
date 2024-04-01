@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Cloud Kubernetes Resume Challenge">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/k8s-resume-banner.png">
+    <meta property="twitter:image" content="img/k8s-resume-banner.png" />
+    
+
+    
+    <meta name="title" content="Cloud Architectural Overview" />
+    <meta property="og:title" content="Cloud Architectural Overview" />
+    <meta property="twitter:title" content="Cloud Architectural Overview" />
+    
+
+    
+    <meta name="description" content="spec | two">
+    <meta property="og:description" content="spec | two" />
+    <meta property="twitter:description" content="spec | two" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Cloud Architectural Overview | spec | journeyman Blog</title>
+
+    <link rel="canonical" href="/post/readme/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Cloud Kubernetes Resume Challenge</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/mynotes/">mynotes</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/archive//">ARCHIVE</a></li>
+                    
+                        <li><a href="/notes//">NOTES</a></li>
+                    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/k8s-resume-banner.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Cloud Architectural Overview</h1>
+                    <h2 class="subheading">Civo</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Charles Vosloo
+                             
+                            on 
+                            Tuesday, March 26, 2024
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h3 id="cloud-architecture-and-overview">Cloud Architecture and Overview</h3>
+<p>I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.</p>
+<p>
+  <img src="/img/discord_chat3.png" alt="screenshot">
+
+</p>
+<blockquote>
+<p>&ldquo;No guarantees it will have all the features you need&rdquo;</p>
+</blockquote>
+<p>What features are missing?</p>
+<p>Compared to AWS I am sure the list is long: networking and security features, the IAM service, CloudTrail, managed databases (Amazon RDS, DynamoDB), S3 storage. Plus the AWS SLA (Service level agreement) guarantees High Availability and reliability for top-end enterprise production workloads. AWS Lambda (serverless) ?</p>
+<blockquote>
+<p>But, isn&rsquo;t Kubernetes <em><strong>the</strong></em> platform of the cloud?</p>
+</blockquote>
+<h4 id="my-setup">My Setup</h4>
+<p>
+  <img src="/img/cloud_diagram2.png" alt="cloud-arch">
+
+</p>
+<p>A convenient next step after setting up git and github is to use Github Actions as part of the CI/CD implementation to automate the build process. The workflow arrows on this diagram are a best practice goal.</p>
+<!-- raw HTML omitted -->
+<p>While the mysql image, mariadb:lts remains fixed, it is the ecom-web image that gets  continuously built.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h5 id="the-interations-of-ecom-web">The interations of ecom-web:</h5>
+<blockquote>
+<p>v1 - the configuration of ecom-web:v1 with mariadb:lts<br>
+v2 - add a advertising banner + day/night toggle<br>
+v3 - add integration to OpenFaas - Faasd server</p>
+</blockquote>
+<p>The installation of applications from the Civo Marketplace is very useful. The civo Marketplace can be found on the UI Dashboard or on the client CLI where you can get a description of each application or get a list of the application with:</p>
+<p><code>civo kubernetes applications ls </code>
+
+  <img src="/img/civo_applications2.png" alt="civo_applications">
+
+</p>
+<p>You can install applications with:</p>
+<p><code>civo kubernetes applications add cert-manager traefic2-loadbalancer --cluster ecom</code></p>
+<p>Leveraging Helm, everything then gets integrated into the existing cluster using default or sensible defaults and the idea at <em>most</em> is that it works seamlessly. <!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h3 id="improving-the-environment">Improving the environment</h3>
+<p>What is wrong with our ecomerce application?</p>
+<h5 id="security">Security</h5>
+<p>RBAC (Role-Based Access Control) is not set up. All pods and services within the cluster can communicate with each other without any restrictions.</p>
+<p>No Network Policies defined where ingress and egress traffic based on IP addresses, ports, or labels are restricted to minimize the attacks on the network.</p>
+<p>No third party solutions ues to manage secrets securely.</p>
+<h5 id="devops-best-practices">Devops Best Practices</h5>
+<p>No argocd or flux installed: We are not applying GitOps. <br>
+No real Infrastructure as code system used like Terraform or Crossplane.<br>
+No CI/CD pipeline set up with Github actions, Jenkins, Gitlab or Azure Devops.<br>
+No monitoring and observability tools set up.</p>
+<p>So, what&rsquo;s next?</p>
+<p>Apply RBAC and Network policy rules. Go out and install Hashicorp vault, argocd, terraform, Prometheus and Grafana and hope that you get it right with  all the services communicating with each other with the new security features?</p>
+<p>No!</p>
+<blockquote>
+<p>There is no need to reinvent the wheel.</p>
+</blockquote>
+<p>I like the approach outlined below.</p>
+<h3 id="kubefirst">Kubefirst</h3>
+<p>Kubernetes and the Kuberetes ecosystem has many moving parts.  Putting them all together does actually take for ever, hence the rise of platform engineering. A better approach is to spend the time, after the fact, figuring out how the parts fit together rather than trying to put them together first.</p>
+<p>This one line civo installation command, achieves the goal:</p>
+<p><code>civo kubernetes applications add kubefirst --cluster ecom</code></p>
+<p>We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it&rsquo;s own &lsquo;marketplace&rsquo; which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.</p>
+<p>
+  <img src="/img/kubefirst-arch.png" alt="kubefirst-architecture">
+
+</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>「真诚赞赏，手留余香」</p>
+	
+	<button class="zs show-zs btn btn-bred">赞赏支持</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+		<span class="author"><a href="https://journeyman33.github.io/"><img src="/img/favicon.png" />Cloud Kubernetes Resume Challenge</a></span>
+        
+	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
+		
+ 
+	</div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">2元</button>
+			<button class="btn btn-blink" data-num="5">5元</button>
+			<button class="btn btn-blink" data-num="10">10元</button>
+			<button class="btn btn-blink" data-num="50">50元</button>
+			<button class="btn btn-blink" data-num="100">100元</button>
+			<button class="btn btn-blink" data-num="1">任意金额</button>
+		</div>
+		<div class="zs-modal-pay">
+			<button class="btn btn-bred" id="pay-text">2元</button>
+			<p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+			<img src="/img/reward/wechat-2.png"  id="pay-image"/>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span ><span class="zs-wechat"><img src="/img/reward/wechat-btn.png"/></span></label>
+		<label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img src="/img/reward/alipay-btn.png"/></span></label>
+	</div>
+</div>
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/week_four/" data-toggle="tooltip" data-placement="top" title="Week Four">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
+                
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/mynotes" title="mynotes">
+                            mynotes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/tag1" title="tag1">
+                            tag1
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/tag2" title="tag2">
+                            tag2
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://82424f2d-c61e-4956-ab59-9d30f88ba52a.k8s.civo.com">Civo Server &gt; https://82424f2d-c61e-4956-ab59-9d30f88ba52a.k8s.civo.com</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:voslooc@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/journeyman33">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://gitlab.com/-/user_settings/profile">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/charlesvosloo/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Cloud Kubernetes Resume Challenge 2024
+                    
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

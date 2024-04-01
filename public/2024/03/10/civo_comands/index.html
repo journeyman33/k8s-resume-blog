@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Cloud Kubernetes Resume Challenge">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://journeyman33.github.io//img/k8s-resume-banner.png">
+    <meta property="twitter:image" content="https://journeyman33.github.io//img/k8s-resume-banner.png" />
+    
+
+    
+    <meta name="title" content="Civo Commands" />
+    <meta property="og:title" content="Civo Commands" />
+    <meta property="twitter:title" content="Civo Commands" />
+    
+
+    
+    <meta name="description" content="My reference to civo setup and civo commands plus">
+    <meta property="og:description" content="My reference to civo setup and civo commands plus" />
+    <meta property="twitter:description" content="My reference to civo setup and civo commands plus" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Civo Commands | spec | journeyman Blog</title>
+
+    <link rel="canonical" href="/2024/03/10/civo_comands/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Cloud Kubernetes Resume Challenge</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/mynotes/">mynotes</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/archive//">ARCHIVE</a></li>
+                    
+                        <li><a href="/notes//">NOTES</a></li>
+                    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/k8s-resume-banner.png')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/mynotes" title="mynotes">
+                            mynotes
+                        </a>
+                        
+                    </div>
+                    <h1>Civo Commands</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Charles Vosloo
+                             
+                            on 
+                            Monday, March 4, 2024
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h3 id="civo-setup-and-teardown">Civo: Setup and Teardown</h3>
+<h3 id="some-civo-aliases">Some civo aliases</h3>
+<p>kubernetes = k3s, k8s, kube<br>
+applications = apps, addons, marketplace<br>
+save = save, add, store, create, new</p>
+<p>ecom = the name of the cluster<br>
+ecom = the name of the kubernetes namespace used</p>
+<h3 id="set-up-civo-api-key-done-once">Set up Civo api key (done once)</h3>
+<p>Get API key from civo Dashboard &gt; login at <a href="https://dashboard.civo.com/">https://dashboard.civo.com/</a></p>
+<h4 id="on-laptop">On laptop</h4>
+<p>brew install civo<br>
+civo apikey add my-civo  DAb75..<br>
+civo apikey ls (confirm)</p>
+<h3 id="setup">Setup</h3>
+<blockquote>
+<p>civo kubernetes create ecom &ndash;remove-applications=traefik2-nodeport &ndash;applications traefik2-loadbalancer,cert-manager &ndash;cni-plugin cilium  -n 1 -s g4s.kube.medium create-firewall  &ndash;wait &ndash;save &ndash;merge &ndash;switch</p>
+</blockquote>
+<p><code>civo kubernetes config ecom --save</code> (adds kubeconfig to ~/.kube/config)<br>
+The flags used above <code>--save --merge --switch</code> do the same.<br>
+<code>k ctx</code> (confirm the current cluster is &rsquo;ecom&rsquo; with kubectl ctx krew plugin)</p>
+<p><code>kubectl create namespace ecom</code><br>
+<code>k ns ecom</code> (set namespace using the kubectl ns krew plugin)</p>
+<h3 id="cofirm-what-is-installed">Cofirm what is installed:</h3>
+<p><code>civo k3s apps ls</code>  (list everyting in the marketplace)
+civo k3s apps show cert-manager ecom     <br>
+civo k3s apps show traefik2-loadbalancer ecom   <br>
+civo loadbalancer show civo-kube-system-traefik<br>
+<code>civo k3s show ecom</code>  (everything inside the ecom cluster)</p>
+<h3 id="add-additional-marketplace-apps-to-existing-ecom-cluster-skip">Add additional marketplace apps to existing ecom cluster (skip)</h3>
+<p>civo k3s apps add argocd &ndash;cluster ecom<br>
+civo k3s show ecom            <br>
+civo k3s apps show argocd ecom</p>
+<h3 id="exposing-ecom-to-https-traefik-and-cert-manager">Exposing ecom to HTTPS, Traefik and cert-manager:</h3>
+<blockquote>
+<p>cd ~/k8s-resume-challenge/kubernetes/civo<br>
+(cloned from htps://github.com/journeyman33/k8s-resume-challenge)<br>
+k apply -f clusterissuer.yaml<br>
+civo k3s show ecom</p>
+</blockquote>
+<blockquote>
+<h4 id="from-output-get-dns-name-and-place-it-in-both-commonname-and-dnsnames-in-the-certificationyaml-file">From output get DNS name and place it in both commonName and dnsNames in the certification.yaml file</h4>
+</blockquote>
+<blockquote>
+<p>vim certification.yaml   <br>
+k apply -f certification.yaml</p>
+</blockquote>
+<blockquote>
+<h3 id="match-again-the-dns-name-and-place-it-in-both-the-host-and-hosts-section-of-ingressyaml">Match again the DNS name and place it in both the host and hosts section of ingress.yaml</h3>
+<p>vim ingress.yaml<br>
+k apply -f ingress.yaml</p>
+</blockquote>
+<blockquote>
+<p>k get ing (confirm)</p>
+</blockquote>
+<h4 id="apply-the-manifests">Apply the manifests</h4>
+<p>❯ ls  ~/k8s-resume-challenge/kubernetes/deploy-civo<br>
+mysql-cm-db-load-script.yaml<br>
+mysql-deployment.yaml<br>
+mysql-service.yaml <br>
+website-service.yaml<br>
+mysql-cm.yaml<br>
+mysql-secret.yaml     <br>
+website-deployment.yaml</p>
+<p><code>K apply -f ~/k8s-resume-challenge/kubernetes/deploy-civo/</code></p>
+<h3 id="place-domain-name-in-browser--eg">Place domain name in browser  e.g.</h3>
+<p>256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com</p>
+<h3 id="or-test-the-domain-name--on-cli">Or test the domain name  on cli</h3>
+<p>curl -k 256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com</p>
+<h3 id="tear-down-ecom-cluster">Tear down &rsquo;ecom&rsquo; cluster</h3>
+<p><code>civo k3s remove ecom cluster</code><br>
+<code>nvim  ~/.kube/config</code><br>
+(manually delete &rsquo;ecom&rsquo; lines under <em>cluster</em>, <em>context</em> and <em>user</em> section)</p>
+
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p>「真诚赞赏，手留余香」</p>
+	
+	<button class="zs show-zs btn btn-bred">赞赏支持</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+		<span class="author"><a href="https://journeyman33.github.io/"><img src="/img/favicon.png" />Cloud Kubernetes Resume Challenge</a></span>
+        
+	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
+		
+ 
+	</div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">2元</button>
+			<button class="btn btn-blink" data-num="5">5元</button>
+			<button class="btn btn-blink" data-num="10">10元</button>
+			<button class="btn btn-blink" data-num="50">50元</button>
+			<button class="btn btn-blink" data-num="100">100元</button>
+			<button class="btn btn-blink" data-num="1">任意金额</button>
+		</div>
+		<div class="zs-modal-pay">
+			<button class="btn btn-bred" id="pay-text">2元</button>
+			<p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+			<img src="/img/reward/wechat-2.png"  id="pay-image"/>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span ><span class="zs-wechat"><img src="/img/reward/wechat-btn.png"/></span></label>
+		<label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img src="/img/reward/alipay-btn.png"/></span></label>
+	</div>
+</div>
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/docker_commands/" data-toggle="tooltip" data-placement="top" title="Docker Commands">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/week_one/" data-toggle="tooltip" data-placement="top" title="Week One">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/mynotes" title="mynotes">
+                            mynotes
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/tag1" title="tag1">
+                            tag1
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/tag2" title="tag2">
+                            tag2
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://82424f2d-c61e-4956-ab59-9d30f88ba52a.k8s.civo.com">Civo Server &gt; https://82424f2d-c61e-4956-ab59-9d30f88ba52a.k8s.civo.com</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:voslooc@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/journeyman33">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://gitlab.com/-/user_settings/profile">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/charlesvosloo/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Cloud Kubernetes Resume Challenge 2024
+                    
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
