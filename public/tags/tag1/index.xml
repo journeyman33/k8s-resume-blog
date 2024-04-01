@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tag1 on Cloud Kubernetes Resume Challenge</title>
-    <link>https://journeyman33.github.io/tags/tag1/</link>
+    <link>https://journeyman33.github.io/k8s-resume-blog/tags/tag1/</link>
     <description>Recent content in tag1 on Cloud Kubernetes Resume Challenge</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://journeyman33.github.io/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://journeyman33.github.io/k8s-resume-blog/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Week Four</title>
-      <link>https://journeyman33.github.io/post/week_four/</link>
+      <link>https://journeyman33.github.io/k8s-resume-blog/post/week_four/</link>
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://journeyman33.github.io/post/week_four/</guid>
+      <guid>https://journeyman33.github.io/k8s-resume-blog/post/week_four/</guid>
       <description>Extra Credit Three tasks were suggested here: Package Everything in Helm Implement Persistent Storage Implement Basic CI/CD Pipeline Make use of Serverless 2 Persistent Storage When the mysql deployment pods go down due to restarts, updates, or scaling the data is lost. Therefore we want to persist the contents of the container directory /var/lib/mysql with outside storage.&#xA;kubectl get storageclass -oyaml&#xA;apiVersion: storage.k8s.io/v1 kind: StorageClass metadata: name: civo-volume provisioner: csi.civo.com reclaimPolicy: Delete volumeBindingMode: WaitForFirstConsumer The presence of a StorageClass configuration indicates that Civo Cloud offers a default persistent storage solution to dynamically provision storage with PVs (Persistent volumes) and PVC&amp;rsquo;s (Persistent Volume Claims).</description>
     </item>
     <item>
       <title>Week Three</title>
-      <link>https://journeyman33.github.io/post/week_three/</link>
+      <link>https://journeyman33.github.io/k8s-resume-blog/post/week_three/</link>
       <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://journeyman33.github.io/post/week_three/</guid>
+      <guid>https://journeyman33.github.io/k8s-resume-blog/post/week_three/</guid>
       <description>Step 6: Implement Configuration Management Task: Add a feature toggle to the web application to enable a “dark mode” for the website. I first attempted this without reading the instructions carefully. It does not ask to create a physical day night switch on the web app to toggle between dark mode and light mode, but rather to create a kubernetes config map to toggle the settings with the default set to dark mode.</description>
     </item>
     <item>
       <title>Week Two</title>
-      <link>https://journeyman33.github.io/post/week_two/</link>
+      <link>https://journeyman33.github.io/k8s-resume-blog/post/week_two/</link>
       <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://journeyman33.github.io/post/week_two/</guid>
+      <guid>https://journeyman33.github.io/k8s-resume-blog/post/week_two/</guid>
       <description>Step 3: Set Up Kubernetes on a Public Cloud Provider Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:&#xA;civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer,cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch&#xA;You can interact with Civo in three ways:&#xA;The Dashboard Civo CLI Terraform I used the CLI. I was able to set up a bash script to automate the next step of exposing the cluster to https, Traefic LoadBalancer and cert-manager shown in the scripts section of my code-repository https://github.</description>
     </item>
     <item>
       <title>Week One</title>
-      <link>https://journeyman33.github.io/post/week_one/</link>
+      <link>https://journeyman33.github.io/k8s-resume-blog/post/week_one/</link>
       <pubDate>Tue, 05 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://journeyman33.github.io/post/week_one/</guid>
+      <guid>https://journeyman33.github.io/k8s-resume-blog/post/week_one/</guid>
       <description>Step 1: Certification The Certified Kubernetes Application Developer (CKAD) course is a great resource. Also from Kodekloud, the Ultimate Certified Kubernetes CKAD mock exams was what I enjoyed the most. I completed the CKA on 26 may 2021 and the CKS on 18 Nov 2021. Step 2: Containerize Your E-Commerce Website and Database A. Web Application Containerization The first step was to set up civo and kubectl cli client running on ubuntu Windows WSL running with Docker Desktop installed.</description>
     </item>
     <item>
       <title>Docker Commands</title>
-      <link>https://journeyman33.github.io/post/docker_commands/</link>
+      <link>https://journeyman33.github.io/k8s-resume-blog/post/docker_commands/</link>
       <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://journeyman33.github.io/post/docker_commands/</guid>
+      <guid>https://journeyman33.github.io/k8s-resume-blog/post/docker_commands/</guid>
       <description>How to build and push Web-app Dockerfile from local environment cd ~/k8s-resume-challenge/web-app&#xA;cat Dockerfile&#xA;FROM php:7.4-apache&#xA;RUN docker-php-ext-install mysqli&#xA;COPY ./Web-app /var/www/html/ EXPOSE 80 ENV MYSQL_HOST=mysql-service&#xA;docker build -t journeyman/ecom-web:v3 .&#xA;docker run -p 8080:80 journeyman/ecom-web:v3 docker run &amp;ndash;name myweb -it -d -p 8080:80 journeyman/ecom-web:v1 docker push journeyman/ecom-web:v3</description>
     </item>
   </channel>
