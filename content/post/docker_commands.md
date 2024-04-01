@@ -3,7 +3,7 @@ title:       "Docker Commands"
 subtitle:    ""
 description: ""
 date:        "2024-03-04"
-author:      "Charles Vosloo"
+author: Charles Vosloo
 image:       ""
 tags:        ["tag1", "tag2"]
 categories:  ["mynotes" ]
