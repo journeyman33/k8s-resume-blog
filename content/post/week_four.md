@@ -3,7 +3,7 @@ title:       "Week Four"
 subtitle:    "Extra Credit"
 description: ""
 date:        "2024-03-25"
-author: Charles Vosloo
+author:      "Charles Vosloo"
 image:       ""
 tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]

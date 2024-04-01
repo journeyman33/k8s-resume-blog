@@ -97,7 +97,7 @@ This one line civo installation command, achieves the goal:
 
 ``` civo kubernetes applications add kubefirst --cluster ecom ```  
 
-We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it's own 'marketplace' which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.        
+We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required for any running system. However, Kubefirst also has it's own 'marketplace' which means different parts are interchangable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectual diagram showing the defaults. Many moving parts to control many moving parts.        
 
 ![kubefirst-architecture](/img/kubefirst-arch.png)  
 

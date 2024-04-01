@@ -3,7 +3,7 @@ title:       "Week One"
 subtitle:    "dockerize the eccomerce site"
 description: ""
 date:        "2024-03-05"
-author: Charles Vosloo
+author:      "Charles Vosloo"
 image:       ""
 tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]

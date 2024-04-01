@@ -88,8 +88,8 @@ home = ["HTML", "RSS", "Algolia"]
   #git           = "full profile url for git user"
   
   [[params.friend_link]]
-  title = "Civo Server > https://82424f2d-c61e-4956-ab59-9d30f88ba52a.k8s.civo.com"
-  href =  "https://82424f2d-c61e-4956-ab59-9d30f88ba52a.k8s.civo.com"
+  title = "Linda的博客"
+  href =  "https://zhaozhihan.com"
 
   [[params.bookmark_link]]
   title =  "Martin Fowler"
