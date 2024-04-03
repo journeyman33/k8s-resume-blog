@@ -9,21 +9,21 @@
     <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://journeyman33.github.io/k8s-resume-blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>tag1</title>
+      <title>Tag1</title>
       <link>https://journeyman33.github.io/k8s-resume-blog/tags/tag1/</link>
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://journeyman33.github.io/k8s-resume-blog/tags/tag1/</guid>
       <description></description>
     </item>
     <item>
-      <title>tag2</title>
+      <title>Tag2</title>
       <link>https://journeyman33.github.io/k8s-resume-blog/tags/tag2/</link>
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://journeyman33.github.io/k8s-resume-blog/tags/tag2/</guid>
       <description></description>
     </item>
     <item>
-      <title>mynotes</title>
+      <title>Mynotes</title>
       <link>https://journeyman33.github.io/k8s-resume-blog/tags/mynotes/</link>
       <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://journeyman33.github.io/k8s-resume-blog/tags/mynotes/</guid>
