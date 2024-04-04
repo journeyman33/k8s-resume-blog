@@ -13,7 +13,10 @@ I once suggested using Civo on a new project and was immediately dismissed in fa
 #![screenshot](/img/discord_chat3.png)
 #![screenshot](https://journeyman33.github.io/k8s-resume-blog/img/discord_chat3.png)
 #![screenshot](https://github.com/journeyman33/k8s-resume-blog/img/half_page2.png)
-![screenshot]({{ .Params.baseurl }}/img/half_page2.png)
+#![screenshot]({{ .Params.baseurl }}/img/half_page2.png)
+![screenshot]({{< baseurl >}}/img/discord_chat3.png)
+#![screenshot]({{ .Site.BaseURL }}/img/half_page2.png)
+
 
 > "No guarantees it will have all the features you need"  
 
