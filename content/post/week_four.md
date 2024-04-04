@@ -7,7 +7,8 @@ author: "Charles Vosloo"
 image:       ""
 tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]
-baseurl:     "{{ .Site.BaseURL }}" 
+#baseurl:     "{{ .Site.BaseURL }}" 
+baseurl: ""   #"https://journeyman33.github.io/k8s-resume-blog/"
 ---
 ### Extra Credit
 ##### Three tasks were suggested here:        
@@ -122,8 +123,8 @@ Instead of running it on a VM I chose to run the faasd server On Prem, on a rasp
   
 The downside: This setup has a single point of failure. However, there are no cloud fees, and the raspberry pi address running on my local LAN, is routable externally thanks to the installation of inlets. The other problem particular to South Africa are daily scheduled power outages. After about a day without power my backup system will fail, the cell phone towers follow, and then not only can the server go down but the internet too.
 
+<!-- ![laptop_pic]({{.Params.baseurl }}/img/half_page2.png) -->
 ![laptop_pic]({{ .Params.baseurl }}/img/half_page2.png)
-
 
       
 

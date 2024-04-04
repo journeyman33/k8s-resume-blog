@@ -310,6 +310,7 @@ Kubernetes - declarative, extensible, scale-out, self-healing clustering</p>
 </ol>
 <p>Instead of running it on a VM I chose to run the faasd server On Prem, on a raspberry pi. Faasd, a light weight version of OpenFaas, uses Containerd instead of kubernetes which results in it running faster.  This is procedure is explained by the creator, Alex Ellis in his book, <a href="https://openfaas.gumroad.com/l/serverless-for-everyone-else">Serverless for everyone else</a></p>
 <p>The downside: This setup has a single point of failure. However, there are no cloud fees, and the raspberry pi address running on my local LAN, is routable externally thanks to the installation of inlets. The other problem particular to South Africa are daily scheduled power outages. After about a day without power my backup system will fail, the cell phone towers follow, and then not only can the server go down but the internet too.</p>
+<!-- raw HTML omitted -->
 <p>![laptop_pic]({{ .Params.baseurl }}/img/half_page2.png)</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
