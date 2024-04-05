@@ -2,65 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/readme/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/readme/</loc>
     <lastmod>2024-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/</loc>
     <lastmod>2024-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/</loc>
     <lastmod>2024-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/categories/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/categories/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/tags/tag1/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/tags/tag1/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/tags/tag2/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/tags/tag2/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/tags/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/tags/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/categories/tech/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/categories/tech/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/week_four/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/week_four/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/week_three/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/week_three/</loc>
     <lastmod>2024-03-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/week_two/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/week_two/</loc>
     <lastmod>2024-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/week_one/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/week_one/</loc>
     <lastmod>2024-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/civo_commands/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/civo_commands/</loc>
     <lastmod>2024-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/docker_commands/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/docker_commands/</loc>
     <lastmod>2024-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/tags/mynotes/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/tags/mynotes/</loc>
     <lastmod>2024-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/categories/mynotes/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/categories/mynotes/</loc>
     <lastmod>2024-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/post/faasd_commands/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/post/faasd_commands/</loc>
     <lastmod>2024-03-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/about/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/about/</loc>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/notes/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/notes/</loc>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/search/placeholder/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/search/placeholder/</loc>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/archive/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/archive/</loc>
   </url><url>
-    <loc>https://journeyman33.github.io/k8s-resume-blog/search/</loc>
+    <loc>http://localhost:1313/k8s-resume-blog/search/</loc>
   </url>
 </urlset>
