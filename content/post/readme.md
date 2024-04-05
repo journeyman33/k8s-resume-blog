@@ -11,7 +11,7 @@ image:      "img/k8s-resume-banner.png"
 ### Cloud Architecture and Overview
 I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.
 
-<img src="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot">
+<img src="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot2">
 
 > "No guarantees it will have all the features you need"  
 
