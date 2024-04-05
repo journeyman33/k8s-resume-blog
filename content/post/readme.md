@@ -24,7 +24,9 @@ Compared to AWS I am sure the list is long: networking and security features, th
 
 #### My Setup  
 
-![cloud-arch](/img/cloud_diagram2.png)
+<!-- ![cloud-arch](/img/cloud_diagram2.png) -->
+<img src="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot" style="cursor: pointer">
+
 
 A convenient next step after setting up git and github is to use Github Actions as part of the CI/CD implementation to automate the build process. The workflow arrows on this diagram are a best practice goal.   
 <!-- After that, setting up Flux or ArgoCD provides a full CI/CD GitOps environment. -->
