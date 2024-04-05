@@ -17,7 +17,8 @@ I once suggested using Civo on a new project and was immediately dismissed in fa
 #![screenshot]({{ .Params.baseurl }}/img/half_page2.png) # no!
 #![screenshot]({{< baseurl >}}/img/discord_chat3.png)   # no!
 #![screenshot]({{ .Site.BaseURL }}/img/half_page2.png)   # no?
-<img src>="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot">
+<img src="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot">
+
 
 > "No guarantees it will have all the features you need"  
 
