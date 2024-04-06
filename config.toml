@@ -36,7 +36,7 @@ home = ["HTML", "RSS", "Algolia"]
   algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Charles Vosloo.  I am interested in Kubernetes, Devops, Opensource, family and outdoors."
+  sidebar_about_description = "Charles Vosloo:  I am interested in Kubernetes, Devops, Opensource, family and outdoors."
   sidebar_avatar = "img/eye_of_africa_pic3.png" 
 
   featured_tags = false

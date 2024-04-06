@@ -9,7 +9,7 @@ tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]
 ---
 ## Step 1: Certification
-The Certified Kubernetes Application Developer (CKAD) course is a great resource. Also from Kodekloud, the Ultimate Certified Kubernetes CKAD mock exams was what I enjoyed the most.  I completed the CKA on 26 may 2021 and the CKS on 18 Nov 2021.
+KodeKloud have excellent resources: The Certified Kubernetes Application Developer (CKAD) and what I enjoyed the most was the Ultimate Certified Kubernetes CKAD Mock Exams. I completed the CKA on 26 may 2021 and the CKS on 18 Nov 2021.
 ![cka](https://journeyman33.github.io/k8s-resume-blog/img/certificates.png)  
 
 
