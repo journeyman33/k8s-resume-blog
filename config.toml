@@ -13,7 +13,7 @@ hasCJKLanguage = true
 home = ["HTML", "RSS", "Algolia"]
 
 [params]
-  header_image = "img/k8s-resume-banner.png"
+  header_image = "img/k8s_resume_banner2.png"
   SEOTitle = "spec | journeyman Blog"
   description = "spec | two"
   keyword = "Microservice"
