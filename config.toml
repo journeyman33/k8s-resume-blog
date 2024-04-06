@@ -39,7 +39,7 @@ home = ["HTML", "RSS", "Algolia"]
   sidebar_about_description = "Charles Vosloo.  I am interested in Kubernetes, Devops, Opensource, family and outdoors."
   sidebar_avatar = "img/eye_of_africa_pic3.png" 
 
-  featured_tags = true 
+  featured_tags = false
   featured_condition_size = 1 
 
   # Baidu Analytics
@@ -55,11 +55,11 @@ home = ["HTML", "RSS", "Algolia"]
   twikoo_env_id = ""
 
   #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
-  reward = true 
+  reward = false
   # reward_guide = "" 
 
   friends = true
-  bookmarks = false
+  bookmarks = true
   about_me = true
 
   # Include any custom CSS and/or JS files, url or relative to /static folder
@@ -67,7 +67,7 @@ home = ["HTML", "RSS", "Algolia"]
   #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
 
   [params.social]
-  rss            = false
+  rss            = true
   email          = "voslooc@gmail.com"
   #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
@@ -92,24 +92,12 @@ home = ["HTML", "RSS", "Algolia"]
   href =  "https://82424f2d-c61e-4956-ab59-9d30f88ba52a.k8s.civo.com"
 
   [[params.bookmark_link]]
-  title =  "Martin Fowler"
-  href =  "https://martinfowler.com"
-  [[params.bookmark_link]]
-  title = "ServiceMesher"
-  href =  "http://www.servicemesher.com"
-  [[params.bookmark_link]]
-  title =  "Pxhere"
-  href = "https://pxhere.com"
-  [[params.bookmark_link]]
-  title = "unsplash"
-  href = "https://unsplash.com"
+  title =  "canva.com"
+  href =  "https://canva.com"
   
   [[params.addtional_menus]]
   title =  "ARCHIVE"
   href =  "/archive/"
-  [[params.addtional_menus]]
-  title =  "NOTES"
-  href =  "/notes/"
   [[params.addtional_menus]]
   title =  "ABOUT"
   href =  "/about/"
