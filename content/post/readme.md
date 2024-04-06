@@ -54,7 +54,7 @@ Github Acitons can automate this process. -->
 The installation of applications from the Civo Marketplace is very useful. The civo Marketplace can be found on the UI Dashboard or on the client CLI where you can get a description of each application or get a list of the application with:  
 
 ```civo kubernetes applications ls ```
-![civo_applications](/img/civo_applications2.png)
+![civo_applications](https://journeyman33.github.io/k8s-resume-blog/img/civo_applications2.png)
 
 You can install applications with: 
 
@@ -102,7 +102,7 @@ This one line civo installation command, achieves the goal:
 
 We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it's own 'marketplace' which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.        
 
-![kubefirst-architecture](/img/kubefirst-arch.png)  
+![kubefirst-architecture](https://journeyman33.github.io/k8s-resume-blog/img/kubefirst-arch.png)  
 
 <!-- Here is what we get
 --
