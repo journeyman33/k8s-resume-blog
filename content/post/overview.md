@@ -22,7 +22,7 @@ I once suggested using Civo on a new project and was immediately dismissed in fa
 
 What features are missing? 
 
-Compared to AWS I am sure the list is long: networking and security features, the IAM service, CloudTrail, managed databases (Amazon RDS, DynamoDB), S3 storage. Plus the AWS SLA (Service level agreement) guarantees High Availability and reliability for top-end enterprise production workloads. AWS Lambda (serverless) ?  
+Compared to AWS I am sure the list is long: networking and security features, the IAM service, CloudTrail, managed databases (Amazon RDS, DynamoDB), S3 storage. Plus the AWS SLA (Service level agreement) has a proven record of guaranteeing High Availability and reliability for top-end enterprise production workloads. AWS Lambda (serverless) ?  
 
 > But, isn't Kubernetes ***the*** platform of the cloud?  
 
