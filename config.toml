@@ -97,10 +97,12 @@ home = ["HTML", "RSS", "Algolia"]
   
   [[params.addtional_menus]]
   title =  "ARCHIVE"
-  href =  "/archive/"
+  #href =  "/archive/"
+  href = "https://journeyman33.github.io/k8s-resume-blog/archive/"
   [[params.addtional_menus]]
   title =  "ABOUT"
-  href =  "/about/"
+  #href =  "/about/"
+  href = "https://journeyman33.github.io/k8s-resume-blog/about/"
 
 [outputFormats.Algolia]
 baseName = "algolia"
