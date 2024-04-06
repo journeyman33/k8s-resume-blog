@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mynotes on Cloud Kubernetes Resume Challenge</title>
-    <link>http://localhost:32833/k8s-resume-blog/tags/mynotes/</link>
+    <link>http://localhost:1313/k8s-resume-blog/tags/mynotes/</link>
     <description>Recent content in Mynotes on Cloud Kubernetes Resume Challenge</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:32833/k8s-resume-blog/tags/mynotes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/k8s-resume-blog/tags/mynotes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Civo Commands</title>
-      <link>http://localhost:32833/k8s-resume-blog/civo_commands/</link>
+      <link>http://localhost:1313/k8s-resume-blog/civo_commands/</link>
       <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32833/k8s-resume-blog/civo_commands/</guid>
+      <guid>http://localhost:1313/k8s-resume-blog/civo_commands/</guid>
       <description>Civo: Setup and Teardown Some civo aliases kubernetes = k3s, k8s, kube&#xA;applications = apps, addons, marketplace&#xA;save = save, add, store, create, new&#xA;ecom = the name of the cluster&#xA;ecom = the name of the kubernetes namespace used&#xA;Set up Civo api key (done once) Get API key from civo Dashboard &amp;gt; login at https://dashboard.civo.com/&#xA;On laptop brew install civo (linuxbrew)&#xA;civo apikey add my-civo DAb75..&#xA;civo apikey ls (confirm)</description>
     </item>
     <item>
       <title>Faasd</title>
-      <link>http://localhost:32833/k8s-resume-blog/post/faasd_commands/</link>
+      <link>http://localhost:1313/k8s-resume-blog/post/faasd_commands/</link>
       <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32833/k8s-resume-blog/post/faasd_commands/</guid>
+      <guid>http://localhost:1313/k8s-resume-blog/post/faasd_commands/</guid>
       <description>login from LAN faas-cli login -g http://192.168.0.124 -p d1e2..&#xA;login script ❯ cat connect.sh&#xA;#!/bin/bash&#xA;export PASSWORD=d1e&amp;hellip;&#xA;export IP=192.168.0.127&#xA;export OPENFAAS_URL=http://$IP:8080&#xA;faas-cli login &amp;ndash;gateway $OPENFAAS_URL &amp;ndash;password $PASSWORD &amp;ndash;username &amp;ldquo;admin&amp;rdquo;&#xA;list functions ❯ faas-cli ls&#xA;Function Invocations Replicas&#xA;curl 0 1&#xA;figlet 2 1&#xA;identicon 1 1&#xA;nodeinfo 1</description>
     </item>
   </channel>
