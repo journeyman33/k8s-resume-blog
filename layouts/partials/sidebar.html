@@ -206,18 +206,7 @@
             </div>
     </section>
 	{{ end }}
-    <!-- Bookmarks -->
-    {{ if .Site.Params.bookmarks }}
-    <section>
-        <hr>
-        <h5>LINKS</h5>
-        <ul class="list-inline">
-            {{ range .Site.Params.bookmark_link }}
-            <li><a target="_blank" href="{{.href }}">{{.title}}</a></li>
-            {{ end }}
-        </ul>
-    </section>
-    {{ end }}
+    
     <!-- Featured Tags -->
     {{ if .Site.Params.featured_tags }}
     <section>
@@ -252,6 +241,19 @@
         </ul>
     </section>
     {{ end }}
+    <!-- Bookmarks -->
+    {{ if .Site.Params.bookmarks }}
+    <section>
+        <hr>
+        <h5>LINKS</h5>
+        <ul class="list-inline">
+            {{ range .Site.Params.bookmark_link }}
+            <li><a target="_blank" href="{{.href }}">{{.title}}</a></li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
+
     {{ if .Site.Params.publications }}
     <section>
         <hr class="hidden-sm hidden-xs">
