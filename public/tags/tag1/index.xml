@@ -6,8 +6,15 @@
     <description>Recent content in Tag1 on Cloud Kubernetes Resume Challenge</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://journeyman33.github.io/k8s-resume-blog/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud Architectural Overview</title>
+      <link>https://journeyman33.github.io/k8s-resume-blog/post/overview/</link>
+      <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://journeyman33.github.io/k8s-resume-blog/post/overview/</guid>
+      <description>Cloud Architecture and Overview I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.</description>
+    </item>
     <item>
       <title>Week Four</title>
       <link>https://journeyman33.github.io/k8s-resume-blog/post/week_four/</link>

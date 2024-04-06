@@ -189,6 +189,33 @@
 <div data-pagefind-ignore="all">
 
 <div class="post-preview">
+    <a href="https://journeyman33.github.io/k8s-resume-blog/post/overview/">
+        <h2 class="post-title">
+            Cloud Architectural Overview
+        </h2>
+	
+        <h3 class="post-subtitle">
+            Civo
+        </h3>
+	
+        <div class="post-content-preview">
+	
+            Cloud Architecture and Overview I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Charles Vosloo on Tuesday, March 26, 2024
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="https://journeyman33.github.io/k8s-resume-blog/post/week_four/">
         <h2 class="post-title">
             Week Four
@@ -301,39 +328,19 @@ The Dashboard Civo CLI Terraform I used the CLI. I was able to set up a bash scr
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="https://journeyman33.github.io/k8s-resume-blog/post/docker_commands/">
-        <h2 class="post-title">
-            Docker Commands
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            How to build and push Web-app Dockerfile from local environment cd ~/k8s-resume-challenge/web-app
-cat Dockerfile
-FROM php:7.4-apache
-RUN docker-php-ext-install mysqli
-COPY ./Web-app /var/www/html/ EXPOSE 80 ENV MYSQL_HOST=mysql-service
-docker build -t journeyman/ecom-web:v3 .
-docker run -p 8080:80 journeyman/ecom-web:v3 docker run &ndash;name myweb -it -d -p 8080:80 journeyman/ecom-web:v1 docker push journeyman/ecom-web:v3
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Charles Vosloo on Monday, March 4, 2024
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
 </div>
 
             
 
+
+<ul class="pager" data-pagefind-ignore="all">
+    
+    
+    <li class="next">
+        <a href="/k8s-resume-blog/tags/tag1/page/2/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
 
 
        	</div>
