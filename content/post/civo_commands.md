@@ -28,7 +28,7 @@ ecom = the name of the kubernetes namespace used
 
 Get API key from civo Dashboard > login at https://dashboard.civo.com/   
 #### On laptop 
-brew install civo  
+brew install civo  (linuxbrew)  
 civo apikey add my-civo  DAb75..   
 civo apikey ls (confirm)   
 
