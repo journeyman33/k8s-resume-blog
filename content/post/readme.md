@@ -5,13 +5,15 @@ subtitle:   "Civo"
 date:       "2024-03-26"
 author:     "Charles Vosloo"
 image:      "img/k8s-resume-banner.png"
-# image:      "img/discord_chat3.png"
-# baseurl:    "{{ .Site.BaseURL }}"
+baseurl:    "{{ .Site.BaseURL }}"
 ---
 ### Cloud Architecture and Overview
 I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.
 
-<img src="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot2">
+<!-- <img src="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot2"> -->
+<!-- ![screenshot]({{ .Site.BaseURL }}/img/discord_chat3.png) -->
+![screenshot]({{< baseurl >}}/img/discord_chat3.png)
+
 
 > "No guarantees it will have all the features you need"  
 
@@ -25,7 +27,7 @@ Compared to AWS I am sure the list is long: networking and security features, th
 #### My Setup  
 
 <!-- ![cloud-arch](/img/cloud_diagram2.png) -->
-![screenshot2](https://journeyman33.github.io/k8s-resume-blog/img/discord_chat3.png)
+![screenshot2](https://journeyman33.github.io/k8s-resume-blog/img/cloud_diagram2.png)
 
 A convenient next step after setting up git and github is to use Github Actions as part of the CI/CD implementation to automate the build process. The workflow arrows on this diagram are a best practice goal.   
 <!-- After that, setting up Flux or ArgoCD provides a full CI/CD GitOps environment. -->
