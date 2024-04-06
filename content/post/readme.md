@@ -12,7 +12,7 @@ I once suggested using Civo on a new project and was immediately dismissed in fa
 
 <!-- <img src="/k8s-resume-blog/img/discord_chat3.png" alt="screenshot2"> -->
 <!-- ![screenshot](.Site.BaseURL/img/discord_chat3.png) -->
-![screenshot]({{ .Site.BaseURL }}/img/discord_chat3.png)
+![screenshot](.Site.BaseURL/img/discord_chat3.png)
 
 
 > "No guarantees it will have all the features you need"  
