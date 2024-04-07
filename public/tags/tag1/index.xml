@@ -6,12 +6,12 @@
     <description>Recent content in Tag1 on Cloud Kubernetes Resume Challenge</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/k8s-resume-blog/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cloud Architectural Overview</title>
       <link>http://localhost:1313/k8s-resume-blog/post/overview/</link>
-      <pubDate>Tue, 26 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/k8s-resume-blog/post/overview/</guid>
       <description>Cloud Architecture and Overview I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.</description>
     </item>
@@ -34,7 +34,7 @@
       <link>http://localhost:1313/k8s-resume-blog/post/week_two/</link>
       <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/k8s-resume-blog/post/week_two/</guid>
-      <description>Step 3: Set Up Kubernetes on a Public Cloud Provider Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:&#xA;civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer,cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch&#xA;You can interact with Civo in three ways:&#xA;The Dashboard Civo CLI Terraform I used the CLI. I was able to set up a bash script to automate the next step of exposing the cluster to https, Traefic LoadBalancer and cert-manager shown in the scripts section of my code-repository https://github.</description>
+      <description>Step 3: Set Up Kubernetes on a Public Cloud Provider Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:&#xA;civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer, cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch&#xA;You can interact with Civo in three ways:&#xA;The Dashboard Civo CLI Terraform I used the CLI. I was able to set up a bash script to automate the next step of exposing the cluster to https, Traefic LoadBalancer and cert-manager shown in the scripts section of my code-repository https://github.</description>
     </item>
     <item>
       <title>Week One</title>

@@ -208,7 +208,7 @@
     </a>
     <p class="post-meta">
     
-        Posted by Charles Vosloo on Tuesday, March 26, 2024
+        Posted by Charles Vosloo on Saturday, March 30, 2024
         
         
     
@@ -286,7 +286,7 @@ apiVersion: storage.k8s.io/v1 kind: StorageClass metadata: name: civo-volume pro
         <div class="post-content-preview">
 	
             Step 3: Set Up Kubernetes on a Public Cloud Provider Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:
-civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer,cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch
+civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer, cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch
 You can interact with Civo in three ways:
 The Dashboard Civo CLI Terraform I used the CLI. I was able to set up a bash script to automate the next step of exposing the cluster to https, Traefic LoadBalancer and cert-manager shown in the scripts section of my code-repository https://github.
        

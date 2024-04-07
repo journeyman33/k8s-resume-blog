@@ -48,7 +48,7 @@ The flags used above ``--save --merge --switch`` do the same.
 civo k3s apps show cert-manager ecom        
 civo k3s apps show traefik2-loadbalancer ecom      
 civo loadbalancer show civo-kube-system-traefik  
-```civo k3s show ecom```  (everything inside the ecom cluster)
+```civo k3s show ecom``` (applications in ecom cluster = traefik2-loadbalancer,cert-manager,  metrics-server )
 
 ###  Add additional marketplace apps to existing ecom cluster (skip) 
 civo k3s apps add argocd --cluster ecom   

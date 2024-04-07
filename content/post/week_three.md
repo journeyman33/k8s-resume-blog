@@ -41,20 +41,17 @@ A new version ecom-web:v2 of the image needs to built.  The Dockerfile line  ```
 (check the current image)    
 ```kubectl set image deployment web web=journeyman/ecom-web:v2```  
 (v2 now will now replace v1)   
-```kubectl rollout undo deployment web```  
-(go back to the previous version)  
-```kubectl rollout history deployment web```   
-(check the history of image changes)  
+
 
 
 
 ## Step 9: Roll Back a Deployment
 ### Task: Suppose the new banner introduced a bug. Roll back to the previous version.
+```kubectl rollout undo deployment web```  
+(go back to the previous version)  
+```kubectl rollout history deployment web```   
+(check the history of image changes)  
 
-Identify Issue: After deployment, monitoring tools indicate a problem affecting user experience.
-Roll Back: Execute kubectl rollout undo deployment/ecom-web to revert to the previous deployment state.
-Verify Rollback: Ensure the website returns to its pre-update state without the promotional banner.
-Outcome: The application’s stability is quickly restored, highlighting the importance of rollbacks in deployment strategies.
 ## Step 10: Autoscale Your Application
 ### Task: Automate scaling based on CPU usage to handle unpredictable traffic spikes.
 

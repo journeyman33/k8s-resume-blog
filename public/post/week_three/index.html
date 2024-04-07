@@ -240,17 +240,13 @@ A new version ecom-web:v2 of the image needs to built.  The Dockerfile line  <co
 <p><code>kubectl rollout status deployment web</code><br>
 (check the current image) <br>
 <code>kubectl set image deployment web web=journeyman/ecom-web:v2</code><br>
-(v2 now will now replace v1)<br>
-<code>kubectl rollout undo deployment web</code><br>
+(v2 now will now replace v1)</p>
+<h2 id="step-9-roll-back-a-deployment">Step 9: Roll Back a Deployment</h2>
+<h3 id="task-suppose-the-new-banner-introduced-a-bug-roll-back-to-the-previous-version">Task: Suppose the new banner introduced a bug. Roll back to the previous version.</h3>
+<p><code>kubectl rollout undo deployment web</code><br>
 (go back to the previous version)<br>
 <code>kubectl rollout history deployment web</code><br>
 (check the history of image changes)</p>
-<h2 id="step-9-roll-back-a-deployment">Step 9: Roll Back a Deployment</h2>
-<h3 id="task-suppose-the-new-banner-introduced-a-bug-roll-back-to-the-previous-version">Task: Suppose the new banner introduced a bug. Roll back to the previous version.</h3>
-<p>Identify Issue: After deployment, monitoring tools indicate a problem affecting user experience.
-Roll Back: Execute kubectl rollout undo deployment/ecom-web to revert to the previous deployment state.
-Verify Rollback: Ensure the website returns to its pre-update state without the promotional banner.
-Outcome: The application’s stability is quickly restored, highlighting the importance of rollbacks in deployment strategies.</p>
 <h2 id="step-10-autoscale-your-application">Step 10: Autoscale Your Application</h2>
 <h3 id="task-automate-scaling-based-on-cpu-usage-to-handle-unpredictable-traffic-spikes">Task: Automate scaling based on CPU usage to handle unpredictable traffic spikes.</h3>
 <p>The imperative command:<br>
