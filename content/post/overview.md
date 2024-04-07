@@ -91,23 +91,22 @@ Apply RBAC and Network policy rules. Go out and install Hashicorp vault, argocd,
 No! 
 >There is no need to reinvent the wheel. 
 
-I like the approach outlined below.
+Rather install an open-source PaaS solution like Gimlet which is based on Flux, or Kubefirst which is based on Argocd.
 
 ### Kubefirst
 
-Kubernetes and the Kuberetes ecosystem has many moving parts.  Putting them all together does actually take for ever, hence the rise of platform engineering. A better approach is to spend the time, after the fact, figuring out how the parts fit together rather than trying to put them together first.
+Kubernetes and the Kuberetes ecosystem has many moving parts. Finding the right parts and  putting them all together actually does take for ever, hence the rise of Platform Engineering. A better approach is to spend the time, after the fact, figuring out how the parts fit together rather than trying to put them together first.
 
 
 This one line civo installation command, achieves the goal: 
 
 ``` civo kubernetes applications add kubefirst --cluster ecom ```  
 
-We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it's own 'marketplace' which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.        
+We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it's own 'Marketplace' which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.        
 
 ![kubefirst-architecture](https://journeyman33.github.io/k8s-resume-blog/img/kubefirst-arch.png)  
 
-<!-- Here is what we get
---
---
-At the outset eveyting works.  
-We don't have to spend the time figuring out why the cluster is craashin before  we have learnt the system.  -->
+Kubefirst was acquired by Civo in March 2024.  
+#### Here is what we get
+Helm, Terraform + Atlantis, Vault, Datadog, argocd, argo workflows and an example application 'metaphor' fully GitOps integrated with your Github/Gitlab account.
+

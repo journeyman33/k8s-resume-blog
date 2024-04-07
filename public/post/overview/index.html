@@ -277,18 +277,19 @@ No monitoring and observability tools set up.</p>
 <blockquote>
 <p>There is no need to reinvent the wheel.</p>
 </blockquote>
-<p>I like the approach outlined below.</p>
+<p>Rather install an open-source PaaS solution like Gimlet which is based on Flux, or Kubefirst which is based on Argocd.</p>
 <h3 id="kubefirst">Kubefirst</h3>
-<p>Kubernetes and the Kuberetes ecosystem has many moving parts.  Putting them all together does actually take for ever, hence the rise of platform engineering. A better approach is to spend the time, after the fact, figuring out how the parts fit together rather than trying to put them together first.</p>
+<p>Kubernetes and the Kuberetes ecosystem has many moving parts. Finding the right parts and  putting them all together actually does take for ever, hence the rise of Platform Engineering. A better approach is to spend the time, after the fact, figuring out how the parts fit together rather than trying to put them together first.</p>
 <p>This one line civo installation command, achieves the goal:</p>
 <p><code>civo kubernetes applications add kubefirst --cluster ecom</code></p>
-<p>We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it&rsquo;s own &lsquo;marketplace&rsquo; which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.</p>
+<p>We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it&rsquo;s own &lsquo;Marketplace&rsquo; which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.</p>
 <p>
   <img src="https://journeyman33.github.io/k8s-resume-blog/img/kubefirst-arch.png" alt="kubefirst-architecture">
 
 </p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p>Kubefirst was acquired by Civo in March 2024.</p>
+<h4 id="here-is-what-we-get">Here is what we get</h4>
+<p>Helm, Terraform + Atlantis, Vault, Datadog, argocd, argo workflows and an example application &lsquo;metaphor&rsquo; fully GitOps integrated with your Github/Gitlab account.</p>
 
 
                 
