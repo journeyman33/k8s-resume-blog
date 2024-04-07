@@ -120,3 +120,15 @@ params = ["categories", "tags"]
     startLevel = 1
   [markup.highlight]
     style = "dracula"
+
+  [params.giscus]
+  data_repo="https://github.com/journeyman33/giscuss"
+  data_repo_id=""
+  data_category=""
+  data_category_id="your category id"
+  data_mapping="pathname"
+  data_reactions_enabled="1"
+  data_emit_metadata="0"
+  data_theme="light"
+  data_lang="en"
+  crossorigin="anonymous"
