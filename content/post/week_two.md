@@ -11,7 +11,7 @@ categories:  ["Tech" ]
 ## Step 3: Set Up Kubernetes on a Public Cloud Provider
 Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:
 
-```civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer,cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch```
+```civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer, cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch```
 
 You can interact with Civo in three ways:
 

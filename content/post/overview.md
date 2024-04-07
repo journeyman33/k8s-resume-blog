@@ -2,7 +2,7 @@
 layout:     post
 title:      "Cloud Architectural Overview"
 subtitle:   "Civo"
-date:       "2024-03-26"
+date:       "2024-03-30"
 author:     "Charles Vosloo"
 image:      "img/k8s-resume-banner.png"
 categories: ["Tech"]

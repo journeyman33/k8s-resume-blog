@@ -34,7 +34,7 @@ civo apikey ls (confirm)
 
 ###  Setup 
 
-> civo kubernetes create ecom --remove-applications=traefik2-nodeport --applications traefik2-loadbalancer,cert-manager --cni-plugin cilium  -n 1 -s g4s.kube.medium create-firewall  --wait --save --merge --switch
+> civo kubernetes create ecom --remove-applications=traefik2-nodeport --applications traefik2-loadbalancer, cert-manager --cni-plugin cilium  -n 1 -s g4s.kube.medium create-firewall  --wait --save --merge --switch
 
 ```civo kubernetes config ecom --save``` (adds kubeconfig to ~/.kube/config)  
 The flags used above ``--save --merge --switch`` do the same.   
