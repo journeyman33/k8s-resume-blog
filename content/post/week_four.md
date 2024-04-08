@@ -7,6 +7,7 @@ author: "Charles Vosloo"
 image:       ""
 tags:        ["tag1", "tag2"]
 categories:  ["Tech" ]
+include_giscus: "true"
 ---
 ### Extra Credit
 ##### Three tasks were suggested here:        
