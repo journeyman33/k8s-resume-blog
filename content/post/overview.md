@@ -111,13 +111,21 @@ Kubefirst was acquired by Civo in March 2024.
 Helm, Terraform + Atlantis, Vault, Datadog, argocd, argo workflows and an example application called 'metaphor', with two repos fully GitOps integrated with your Github/Gitlab account.
 
 <!-- Giscus Comments Section -->
-<script src="https://giscus.app/client.js"
-    data-repo="journeyman33/giscuss"
-    data-repo-id=""
-    data-mapping="pathname"
-    crossorigin="anonymous"
-    async>
+<!-- <script src="https://giscus.app/client.js"
+        data-repo="journeyman33/k8s-resume-blog"
+        data-repo-id="R_kgDOLmnhzg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLmnhzs4Ceicj"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
 </script>
 <noscript>
     Comments powered by <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a>.
-</noscript>
+</noscript> -->

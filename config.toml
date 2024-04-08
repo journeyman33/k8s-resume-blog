@@ -122,10 +122,10 @@ params = ["categories", "tags"]
     style = "dracula"
 
   [params.giscus]
-  data_repo="https://github.com/journeyman33/giscuss"
-  data_repo_id=""
-  data_category=""
-  data_category_id="your category id"
+  data_repo="journeyman33/k8s-resume-blog"
+  data_repo_id="R_kgDOLmnhzg"
+  data_category="Announcements"
+  data_category_id="DIC_kwDOLmnhzs4Ceicj"
   data_mapping="pathname"
   data_reactions_enabled="1"
   data_emit_metadata="0"
