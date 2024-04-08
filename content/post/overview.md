@@ -98,15 +98,26 @@ Rather install an open-source ready made PaaS solution like Gimlet (Flux), or Ku
 Kubernetes and the Kuberetes ecosystem has many moving parts. Finding the right parts and  putting them all together actually does take for ever, hence the rise of Platform Engineering. A better approach is to spend the time, after the fact, figuring out how the parts fit together rather than trying to put them together first.
 
 
-This one line civo installation command, achieves the goal: 
+The one line civo installation command below, achieves this goal: 
 
 ``` civo kubernetes applications add kubefirst --cluster ecom ```  
 
-We are effectively installing a ready made fully functioning Platform as a Service! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it's own 'Marketplace' which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.        
+We are effectively installing a ready made fully functioning Platform as a Service ! In order for the Kubefirst platform to work at the start it needs to be opinionated which is what is required from any running system. However, Kubefirst also has it's own 'Marketplace' which means different parts are interchangeable. So what you get is a beginners IDP (Independent Developers Platform) that works out of the box. Below is an architectural diagram showing the defaults. Many moving parts to control many moving parts.        
 
 ![kubefirst-architecture](https://journeyman33.github.io/k8s-resume-blog/img/kubefirst-arch.png)  
 
 Kubefirst was acquired by Civo in March 2024.  
 #### Here is what we get
-Helm, Terraform + Atlantis, Vault, Datadog, argocd, argo workflows and an example application 'metaphor', with two repos fully GitOps integrated with your Github/Gitlab account.
+Helm, Terraform + Atlantis, Vault, Datadog, argocd, argo workflows and an example application called 'metaphor', with two repos fully GitOps integrated with your Github/Gitlab account.
 
+<!-- Giscus Comments Section -->
+<script src="https://giscus.app/client.js"
+    data-repo="journeyman33/giscuss"
+    data-repo-id=""
+    data-mapping="pathname"
+    crossorigin="anonymous"
+    async>
+</script>
+<noscript>
+    Comments powered by <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a>.
+</noscript>
