@@ -91,7 +91,7 @@ Apply RBAC and Network policy rules. Go out and install Hashicorp vault, argocd,
 No! 
 >There is no need to reinvent the wheel. 
 
-Rather install an open-source PaaS solution like Gimlet which is based on Flux, or Kubefirst which is based on Argocd.
+Rather install an open-source ready made PaaS solution like Gimlet (Flux), or Kubefirst (Argocd).
 
 ### Kubefirst
 
