@@ -115,7 +115,7 @@ OpenFaas makes use of the PLONK stack. While the LAMP stack (linux, apache, mysq
 The second option, which I have set up, is a scaled down version of the above: the kubernetes cluster is scraped in favour of contaierd containers running each function. Easier and more accessible. The downside: loose built in kubernetes features like High Availability.
 
 2. faasd (on a VM running containerd)  
-![faasd](https://journeyman33.github.io/k8s-resume-blog/faasd-wf.png)
+![faasd](https://journeyman33.github.io/k8s-resume-blog/img/faasd-wf.png)
 
 Instead of running it on a VM I chose to run the faasd server On Prem, on a raspberry pi. Faasd, a light weight version of OpenFaas, uses Containerd instead of kubernetes which results in it running faster.  This is procedure is explained by the creator, Alex Ellis in his book, [Serverless for everyone else](https://openfaas.gumroad.com/l/serverless-for-everyone-else)
 
