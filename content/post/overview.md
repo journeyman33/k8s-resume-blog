@@ -108,7 +108,7 @@ We are effectively installing a ready made fully functioning Platform as a Servi
 
 Kubefirst was acquired by Civo in March 2024.  
 #### Here is what we get
-Helm, Terraform + Atlantis, Vault, Datadog, argocd, argo workflows and an example application called 'metaphor', with two repos fully GitOps integrated with your Github/Gitlab account.
+Helm, Terraform + Atlantis, Vault, Datadog, argocd, argo workflows and an example application called 'Metaphor', with two repos fully GitOps integrated with your Github/Gitlab account.
 
 <!-- Giscus Comments Section -->
 <!-- <script src="https://giscus.app/client.js"
