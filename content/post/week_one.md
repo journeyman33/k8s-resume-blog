@@ -28,7 +28,7 @@ There are two application to deploy to Kubernetes, which I call web and mysql
 
 The first needs containerizing: 
 
-```docker build -t journeyman/ecom-web:v1```
+```docker build -t journeyman/ecom-web:v1 .```
 
 I used the following Dockerfile, arrived at through trial and error:  
 
