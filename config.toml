@@ -88,8 +88,8 @@ home = ["HTML", "RSS", "Algolia"]
   #git           = "full profile url for git user"
   
   [[params.friend_link]]
-  title = "Civo Server > http://6276cc06-5948-4233-a3db-5cf822aa9f33.lb.civo.com/"
-  href =  "http://6276cc06-5948-4233-a3db-5cf822aa9f33.lb.civo.com/"
+  title = "Raspberry Pi Server > https://tunnel.bigtorig.com"
+  href =  "https://tunnel.bigtorig.com/"
 
   [[params.bookmark_link]]
   title =  "canva.com"
