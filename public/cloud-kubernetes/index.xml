@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tech on Charles Vosloo</title>
-    <link>http://localhost:1313/k8s-resume-blog/categories/tech/</link>
-    <description>Recent content in Tech on Charles Vosloo</description>
+    <title>Cloud-Kubernetes on Charles Vosloo</title>
+    <link>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/</link>
+    <description>Recent content in Cloud-Kubernetes on Charles Vosloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/k8s-resume-blog/categories/tech/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Week Three</title>
-      <link>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_three/</link>
-      <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_three/</guid>
-      <description>Step 6: Implement Configuration Management Task: Add a feature toggle to the web application to enable a “dark mode” for the website. I first attempted this without reading the instructions carefully. It does not ask to create a physical day night switch on the web app to toggle between dark mode and light mode, but rather to create a kubernetes config map to toggle the settings with the default set to dark mode.</description>
-    </item>
+    <lastBuildDate>Fri, 15 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Week Two</title>
       <link>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_two/</link>

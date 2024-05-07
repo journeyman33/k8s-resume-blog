@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
-	<meta name="generator" content="Hugo 0.124.1"><script src="/k8s-resume-blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=k8s-resume-blog/livereload" data-no-instant defer></script>
+<head><script src="/k8s-resume-blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=k8s-resume-blog/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,9 +34,9 @@
     <meta name="keyword"  content="Microservice">
     <link rel="shortcut icon" href="/k8s-resume-blog/img/favicon.ico">
 
-    <title>Charles Vosloo | spec | journeyman Blog</title>
+    <title>Cloud-Kubernetes | spec | journeyman Blog</title>
 
-    <link rel="canonical" href="/k8s-resume-blog/">
+    <link rel="canonical" href="/k8s-resume-blog/cloud-kubernetes/">
 
     
     
@@ -185,215 +184,62 @@ if (!doNotTrack) {
 
 
 
-  
-<div data-pagefind-ignore="all" class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
+
+<article>
+    <div class="container">
+        <div class="row">
             
-<div data-pagefind-ignore="all">
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-<div class="post-preview">
-    <a href="http://localhost:1313/k8s-resume-blog/post/docker_commands/">
-        <h2 class="post-title">
-            Docker Commands
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            How to build and push Web-app Dockerfile from local environment cd ~/k8s-resume-challenge/web-app
-cat Dockerfile
-FROM php:7.4-apache
-RUN docker-php-ext-install mysqli
-COPY ./Web-app /var/www/html/ EXPOSE 80 ENV MYSQL_HOST=mysql-service
-docker build -t journeyman/ecom-web:v3 .
-docker run -p 8080:80 journeyman/ecom-web:v3 docker run &ndash;name myweb -it -d -p 8080:80 journeyman/ecom-web:v1 docker push journeyman/ecom-web:v3
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Charles Vosloo on Monday, March 4, 2024
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="http://localhost:1313/k8s-resume-blog/post/faasd_commands/">
-        <h2 class="post-title">
-            Faasd
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            My reference to OpenFaas(Faasd) commands
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Charles Vosloo on Sunday, March 3, 2024
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-</div>
-
-            
-
-
-<ul class="pager" data-pagefind-ignore="all">
-    
-    <li class="previous">
-        <a href="/k8s-resume-blog/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
-
-
-       	</div>
-        
-
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-	
-    <section class="visible-md visible-lg">
-	
-        <div class="short-about">
-            
-            <a href="/about">
-               <img src="/k8s-resume-blog/img/eye_of_africa_pic3.png" alt="avatar" style="cursor: pointer" />
-            </a>
-            
-            
-                <p>Charles Vosloo:  I am interested in Kubernetes, Devops, Opensource, family and outdoors.</p>
-            
-           
-           <ul class="list-inline">
-               
-               <li>
-                   <a href="mailto:voslooc@gmail.com">
-                      <span class="fa-stack fa-lg">
-                          <i class="fa fa-circle fa-stack-2x"></i>
-                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                      </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://github.com/journeyman33">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               <li>
-                   <a target="_blank" href="https://gitlab.com/-/user_settings/profile">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://www.linkedin.com/in/charlesvosloo/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-            
-            
-               
-               
-               
-               
-                </ul>
-            </div>
-    </section>
-	
-    
-    
-    
-
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>K8s Resume challenge LINKS</h5>
-        <ul class="list-inline">
-            
-            <li><a target="_blank" href="https://tunnel.bigtorig.com/">Raspberry Pi K3s Cluster &gt; https://tunnel.bigtorig.com</a></li>
-            
-
-            <li><strong>Civo k3s cluster</strong></li>
-            <li><a target="_blank" href="http://6276cc06-5948-4233-a3db-5cf822aa9f33.lb.civo.com/"><del>http://6276cc06-5948-4233-a3db-5cf822aa9f33.lb.civo.com/</del></a></li>
-        
-            <li><strong>Code Base</strong></li>
-            <li><a target="_blank" href="https://github.com/journeyman33/kubernetes-resume-challenge">https://github.com/journeyman33/
+         	
                 
-            <li><strong>This blog Site</strong></li>
-            <li><a target="_blank" href="https://journeyman33.github.io/k8s-resume-blog/">https://journeyman33.github.io/k8s-resume-blog/</a></li>
-        </ul>
-    </section>
-    
-    
-    
-    <section>
-        <hr>
-        <h5>other LINKS</h5>
-        <ul class="list-inline">
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="journeyman33/k8s-resume-blog"
+        data-repo-id="R_kgDOLmnhzg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLmnhzs4Ceicj"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+            </div>
             
-            <li><a target="_blank" href="https://canva.com">canva.com</a></li>
-            
-        </ul>
-    </section>
-    
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-    
-</div>
+                
+                
 
-	</div>
-</div>
-
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://tunnel.bigtorig.com/">Raspberry Pi K3s Cluster &gt; https://tunnel.bigtorig.com</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -462,7 +308,7 @@ docker run -p 8080:80 journeyman/ecom-web:v3 docker run &ndash;name myweb -it -d
             
            
                    <li>
-                       <a href='/k8s-resume-blog/index.xml' rel="alternate" type="application/rss+xml" title="Charles Vosloo" >
+                       <a href='/k8s-resume-blog/cloud-kubernetes/index.xml' rel="alternate" type="application/rss+xml" title="Charles Vosloo" >
                            <span class="fa-stack fa-lg">
                                <i class="fas fa-circle fa-stack-2x"></i>
                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>

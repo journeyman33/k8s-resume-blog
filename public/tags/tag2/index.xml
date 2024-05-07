@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tag2 on Cloud Kubernetes Resume Challenge</title>
+    <title>Tag2 on Charles Vosloo</title>
     <link>http://localhost:1313/k8s-resume-blog/tags/tag2/</link>
-    <description>Recent content in Tag2 on Cloud Kubernetes Resume Challenge</description>
+    <description>Recent content in Tag2 on Charles Vosloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 Mar 2024 00:00:00 +0000</lastBuildDate>
