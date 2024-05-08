@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Week One" />
+    <meta property="og:title" content="Week One" />
+    <meta property="twitter:title" content="Week One" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Microservice">
     <link rel="shortcut icon" href="/k8s-resume-blog/img/favicon.ico">
 
-    <title>spec | journeyman Blog</title>
+    <title>Week One | spec | journeyman Blog</title>
 
-    <link rel="canonical" href="/k8s-resume-blog/about/">
+    <link rel="canonical" href="/k8s-resume-blog/cloud-kubernetes/week_one/">
 
     
     
@@ -168,14 +168,45 @@ if (!doNotTrack) {
 
 
 
-<header class="intro-header" style="background-image: url('/k8s-resume-blog/img/k8s_resume_banner7.png')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/k8s-resume-blog/img/k8s_resume_banner7.png')
+    }
+</style>
+
+<header class="intro-header" >
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Charles Vosloo </h1>
-                    
-		    <span class="subheading">Devops and Kubernetes</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/tag1" title="tag1">
+                            tag1
+                        </a>
+                        
+                        <a class="tag" href="/tags/tag2" title="tag2">
+                            tag2
+                        </a>
+                        
+                    </div>
+                    <h1>Week One</h1>
+                    <h2 class="subheading">dockerize the eccomerce site</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Charles Vosloo
+                             
+                            on 
+                            Tuesday, March 5, 2024
+                            
+                            
+                            
+                            
+                    </span>
                 </div>
             </div>
         </div>
@@ -188,23 +219,65 @@ if (!doNotTrack) {
 <article>
     <div class="container">
         <div class="row">
-            
-            <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container">
-            
-                <h2 id="about-me">About Me</h2>
-<p><strong><em>Charles Vosloo</em></strong> is a Devops Engineer and a kubernetes enthusiast.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 
             
-             
-            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h2 id="step-1-certification">Step 1: Certification</h2>
+<p>KodeKloud have excellent resources: The Certified Kubernetes Application Developer (CKAD) and what I enjoyed the most was the Ultimate Certified Kubernetes CKAD Mock Exams. I completed the CKA on 26 may 2021 and the CKS on 18 Nov 2021.
+
+  <img src="https://journeyman33.github.io/k8s-resume-blog/img/certificates.png" alt="cka">
+
+</p>
+<!-- raw HTML omitted -->
+<h2 id="step-2-containerize-your-e-commerce-website-and-database">Step 2: Containerize Your E-Commerce Website and Database</h2>
+<h3 id="a-web-application-containerization">A. Web Application Containerization</h3>
+<p>The first step was to set up civo and kubectl cli client running on ubuntu Windows WSL running with Docker Desktop installed.</p>
+<p>There are two application to deploy to Kubernetes, which I call web and mysql</p>
+<ol>
+<li>Web-app (the &rsquo;learning-app-ecomerce  site cloned from kodekloudhub)</li>
+<li>mariadb:lts (pulled form DockerHub)</li>
+</ol>
+<p>The first needs containerizing:</p>
+<p><code>docker build -t journeyman/ecom-web:v1 .</code></p>
+<p>I used the following Dockerfile, arrived at through trial and error:</p>
+<pre tabindex="0"><code class="language-FROM" data-lang="FROM">RUN docker-php-ext-install pdo pdo_mysql mysqli
+WORKDIR /var/www/html
+COPY  ./Web-app/ /var/www/html/
+EXPOSE 80
+CMD [&#34;/usr/sbin/apache2ctl&#34;, &#34;-D&#34;, &#34;FOREGROUND&#34;]
+</code></pre><p>I initially included in the line:</p>
+<p><code>COPY ./db-load-script.sql /docker-entrypoint-initdb.d/</code></p>
+<p>but then pulled it because the task is to run this database initialization script, which populates the database, (db-load-script.sql) as a Kubernetes configMap.</p>
+<p>For mysql to communicate with the PHP website, requires default password(s) and usernames, which as a best practice, is not a good idea to hard code into the Dockefile or environment variables. Therefore I didn&rsquo;t wait for step 12 to add another configmap for the mysql host, port and database and to add a kubernetes secret for the mysql user,password and root password.</p>
+<p>The other basic security measure is to put the project in a namespace.</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/k8s-resume-blog/civo_commands/" data-toggle="tooltip" data-placement="top" title="Civo Commands">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/k8s-resume-blog/cloud-kubernetes/week_two/" data-toggle="tooltip" data-placement="top" title="Week Two">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
 
 
 <script src="https://giscus.app/client.js"
@@ -222,132 +295,47 @@ if (!doNotTrack) {
 </script>
 
 
+            </div>
+
             
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
             </div>
             
-            
 
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-	
-    <section class="visible-md visible-lg">
-	
-        <div class="short-about">
             
-            <a href="/about">
-               <img src="/k8s-resume-blog/img/eye_of_africa_pic3.png" alt="avatar" style="cursor: pointer" />
-            </a>
-            
-            
-                <p>Charles Vosloo:  I am interested in Kubernetes, Devops, Opensource, family and outdoors.</p>
-            
-           
-           <ul class="list-inline">
-               
-               <li>
-                   <a href="mailto:voslooc@gmail.com">
-                      <span class="fa-stack fa-lg">
-                          <i class="fa fa-circle fa-stack-2x"></i>
-                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                      </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://github.com/journeyman33">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               <li>
-                   <a target="_blank" href="https://gitlab.com/-/user_settings/profile">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://www.linkedin.com/in/charlesvosloo/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-            
-            
-               
-               
-               
-               
-                </ul>
-            </div>
-    </section>
-	
-    
-    
-    
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>K8s Resume challenge LINKS</h5>
-        <ul class="list-inline">
-            
-            <li><a target="_blank" href="https://tunnel.bigtorig.com/">Raspberry Pi K3s Cluster &gt; https://tunnel.bigtorig.com</a></li>
-            
-
-            <li><strong>Civo k3s cluster</strong></li>
-            <li><a target="_blank" href="http://6276cc06-5948-4233-a3db-5cf822aa9f33.lb.civo.com/"><del>http://6276cc06-5948-4233-a3db-5cf822aa9f33.lb.civo.com/</del></a></li>
-        
-            <li><strong>Code Base</strong></li>
-            <li><a target="_blank" href="https://github.com/journeyman33/kubernetes-resume-challenge">https://github.com/journeyman33/
                 
-            <li><strong>This blog Site</strong></li>
-            <li><a target="_blank" href="https://journeyman33.github.io/k8s-resume-blog/">https://journeyman33.github.io/k8s-resume-blog/</a></li>
-        </ul>
-    </section>
-    
-    
-    
-    <section>
-        <hr>
-        <h5>other LINKS</h5>
-        <ul class="list-inline">
-            
-            <li><a target="_blank" href="https://canva.com">canva.com</a></li>
-            
-        </ul>
-    </section>
-    
+                
 
-    
-</div>
-
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://tunnel.bigtorig.com/">Raspberry Pi K3s Cluster &gt; https://tunnel.bigtorig.com</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
         </div>
     </div>
 </article>

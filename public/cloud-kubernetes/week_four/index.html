@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="Civo Commands" />
-    <meta property="og:title" content="Civo Commands" />
-    <meta property="twitter:title" content="Civo Commands" />
+    <meta name="title" content="Week Four" />
+    <meta property="og:title" content="Week Four" />
+    <meta property="twitter:title" content="Week Four" />
     
 
     
-    <meta name="description" content="My reference to civo setup and civo commands plus">
-    <meta property="og:description" content="My reference to civo setup and civo commands plus" />
-    <meta property="twitter:description" content="My reference to civo setup and civo commands plus" />
+    <meta name="description" content="spec | two">
+    <meta property="og:description" content="spec | two" />
+    <meta property="twitter:description" content="spec | two" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Microservice">
     <link rel="shortcut icon" href="/k8s-resume-blog/img/favicon.ico">
 
-    <title>Civo Commands | spec | journeyman Blog</title>
+    <title>Week Four | spec | journeyman Blog</title>
 
-    <link rel="canonical" href="/k8s-resume-blog/civo_commands/">
+    <link rel="canonical" href="/k8s-resume-blog/cloud-kubernetes/week_four/">
 
     
     
@@ -183,13 +183,17 @@ if (!doNotTrack) {
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/mynotes" title="mynotes">
-                            mynotes
+                        <a class="tag" href="/tags/tag1" title="tag1">
+                            tag1
+                        </a>
+                        
+                        <a class="tag" href="/tags/tag2" title="tag2">
+                            tag2
                         </a>
                         
                     </div>
-                    <h1>Civo Commands</h1>
-                    <h2 class="subheading"></h2>
+                    <h1>Week Four</h1>
+                    <h2 class="subheading">Extra Credit</h2>
                     <span class="meta">
                         
                             Posted by 
@@ -197,7 +201,7 @@ if (!doNotTrack) {
                                 Charles Vosloo
                              
                             on 
-                            Monday, March 4, 2024
+                            Monday, March 25, 2024
                             
                             
                             
@@ -223,78 +227,106 @@ if (!doNotTrack) {
                 post-container">
 
                 
-                <h3 id="civo-setup-and-teardown">Civo: Setup and Teardown</h3>
-<h3 id="some-civo-aliases">Some civo aliases</h3>
-<p>kubernetes = k3s, k8s, kube<br>
-applications = apps, addons, marketplace<br>
-save = save, add, store, create, new</p>
-<p>ecom = the name of the cluster<br>
-ecom = the name of the kubernetes namespace used</p>
-<h3 id="set-up-civo-api-key-done-once">Set up Civo api key (done once)</h3>
-<p>Get API key from civo Dashboard &gt; login at <a href="https://dashboard.civo.com/">https://dashboard.civo.com/</a></p>
-<h4 id="on-laptop">On laptop</h4>
-<p>brew install civo  (linuxbrew)<br>
-civo apikey add my-civo  DAb75..<br>
-civo apikey ls (confirm)</p>
-<h3 id="setup">Setup</h3>
+                <h3 id="extra-credit">Extra Credit</h3>
+<h5 id="three-tasks-were-suggested-here">Three tasks were suggested here:</h5>
+<ol>
+<li>Package Everything in Helm</li>
+<li><strong>Implement Persistent Storage</strong></li>
+<li>Implement Basic CI/CD Pipeline</li>
+<li><!-- raw HTML omitted --><strong>Make use of Serverless</strong><!-- raw HTML omitted --></li>
+</ol>
+<h4 id="2-persistent-storage">2 Persistent Storage</h4>
+<p>When the mysql deployment pods go down due to restarts, updates, or scaling the data is lost.  Therefore we want to persist the contents of the container directory  <em><strong>/var/lib/mysql</strong></em> with outside storage.</p>
+<p><code>kubectl get storageclass -oyaml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">apiVersion</span>: storage.k8s.io/v1
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">kind</span>: StorageClass
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: civo-volume
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">provisioner</span>: csi.civo.com
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">reclaimPolicy</span>: Delete
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">volumeBindingMode</span>: WaitForFirstConsumer
+</span></span></code></pre></div><p>The presence of a StorageClass configuration indicates that Civo Cloud offers a default persistent storage solution to dynamically provision storage with PVs (Persistent volumes) and PVC&rsquo;s (Persistent Volume Claims).</p>
+<p>Here is how it is done:</p>
+<p>First create a pvc<br>
+<code>cat &gt;&gt; pvc.yaml</code> (this time we are pasting from the docs)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">apiVersion</span>: v1
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">kind</span>: PersistentVolumeClaim
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">name</span>: mysql-vol
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">accessModes</span>:
+</span></span><span style="display:flex;"><span>    - ReadWriteOnce
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">resources</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">requests</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">storage</span>: 4Gi
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ k create -f pvc.yaml  
+</span></span><span style="display:flex;"><span>persistentvolumeclaim/mysql-vol created
+</span></span></code></pre></div><p>Update the mysql-deployment.yaml<br>
+Add the following snippet at <code>spec.template.spec.containers[0]</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>        <span style="color:#ff79c6">volumeMounts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ff79c6">name</span>: mysql-persistent-storage
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">mountPath</span>: /var/lib/mysql
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ff79c6">name</span>: mysql-persistent-storage
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">claimName</span>: mysql-vol
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ k apply -f mysql-deployment.yaml   
+</span></span><span style="display:flex;"><span>deployment.apps/mysql configured  
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ k get pv   
+</span></span><span style="display:flex;"><span>NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM            STORAGECLASS    
+</span></span><span style="display:flex;"><span>pvc-2f330444-...   4Gi        RWO            Delete           Bound    ecom/mysql-vol   civo-volume      43s
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ k get pvc  
+</span></span><span style="display:flex;"><span>NAME        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE  
+</span></span><span style="display:flex;"><span>mysql-vol   Bound    pvc-2f330444-      4Gi        RWO            civo-volume    43m
+</span></span></code></pre></div><h4 id="4-serverless">4 Serverless</h4>
+<p>Actually, I added the fourth option, Make use of Serverless. In the previous version of this challenge one of the steps was to add a visitor counter to the website using the cloud provider&rsquo;s serverless function which would be AWS Lambda, Google Cloud Functions or Azure functions. I wanted to do something similar <strong>using non proprietary solutions.</strong> On our ecomerce site additional features like email notifications, image processing, payment processing, inventory management or any kind of analytics could probably more easily be carried out using serverless or rather functions as a service. Just to prove the concept, my goal was to add the day-night toggle switch as a serverless function, but that didn&rsquo;t pan out.</p>
+<p>How can one implement Open source Serverless on civo cloud?</p>
+<ol>
+<li>OpenFunction</li>
+<li>OpenFaas</li>
+</ol>
+<p>OpenFunction uses Knative, a comprehensive more complex solution that requires a control plain  kubernetes cluster with a minimum of 2 nodes, 4CPU and 8GB memory plus Istio running.</p>
+<p>Civo is a dedicated kubernetes (k3s) cloud provider which embraces popular Open source CNCF products like OpenFaaS:</p>
 <blockquote>
-<p>civo kubernetes create ecom &ndash;remove-applications=traefik2-nodeport &ndash;applications traefik2-loadbalancer, cert-manager &ndash;cni-plugin cilium  -n 1 -s g4s.kube.medium create-firewall  &ndash;wait &ndash;save &ndash;merge &ndash;switch</p>
+<p>&ldquo;a Function as a Service serverless framework that deploys event-driven functions and microservices to Kubernetes in the form of containers.&rdquo;</p>
 </blockquote>
-<p><code>civo kubernetes config ecom --save</code> (adds kubeconfig to ~/.kube/config)<br>
-The flags used above <code>--save --merge --switch</code> do the same.<br>
-<code>k ctx</code> (confirm the current cluster is &rsquo;ecom&rsquo; with kubectl ctx krew plugin)</p>
-<p><code>kubectl create namespace ecom</code><br>
-<code>k ns ecom</code> (set namespace using the kubectl ns krew plugin)</p>
-<h3 id="cofirm-what-is-installed">Cofirm what is installed:</h3>
-<p><code>civo k3s apps ls</code>  (list everyting in the marketplace)
-civo k3s apps show cert-manager ecom     <br>
-civo k3s apps show traefik2-loadbalancer ecom   <br>
-civo loadbalancer show civo-kube-system-traefik<br>
-<code>civo k3s show ecom</code> (applications in ecom cluster = traefik2-loadbalancer,cert-manager,  metrics-server )</p>
-<h3 id="add-additional-marketplace-apps-to-existing-ecom-cluster-skip">Add additional marketplace apps to existing ecom cluster (skip)</h3>
-<p>civo k3s apps add argocd &ndash;cluster ecom<br>
-civo k3s show ecom            <br>
-civo k3s apps show argocd ecom</p>
-<h3 id="exposing-ecom-to-https-traefik-and-cert-manager">Exposing ecom to HTTPS, Traefik and cert-manager:</h3>
+<p>&lsquo;Serverless&rsquo; requires a server. It&rsquo;s only called serverless because when the function is called, from the perspective of the user, where and how the task is carried out is is unnoticed. So, how do we set up and manage an OpenFaas server which we control and own?</p>
+<p>There are two ways to run OpenFaas:</p>
+<ol>
+<li>faas-netes (on a kubernetes cluster)
+
+  <img src="https://journeyman33.github.io/k8s-resume-blog/img/of-workflow.png" alt="faas-netes">
+
+
+OpenFaas makes use of the PLONK stack. While the LAMP stack (linux, apache, mysql, php) is used by our ecomerce site, The JAM stack (javascript, API, markup) is used by this hugo blog, the PLONK stack is comprised of:</li>
+</ol>
 <blockquote>
-<p>cd ~/k8s-resume-challenge/kubernetes/civo<br>
-(cloned from htps://github.com/journeyman33/k8s-resume-challenge)<br>
-k apply -f clusterissuer.yaml<br>
-civo k3s show ecom</p>
-</blockquote>
 <blockquote>
-<h4 id="from-output-get-dns-name-and-place-it-in-both-commonname-and-dnsnames-in-the-certificationyaml-file">From output get DNS name and place it in both commonName and dnsNames in the certification.yaml file</h4>
+<p>Prometheus - metrics and time-series<br>
+Linkerd - service mesh<br>
+OpenFaaS - management and auto-scaling of compute - PaaS/FaaS<br>
+NATS - asynchronous message bus / queue<br>
+Kubernetes - declarative, extensible, scale-out, self-healing clustering</p>
 </blockquote>
-<blockquote>
-<p>vim certification.yaml   <br>
-k apply -f certification.yaml</p>
 </blockquote>
-<blockquote>
-<h3 id="match-again-the-dns-name-and-place-it-in-both-the-host-and-hosts-section-of-ingressyaml">Match again the DNS name and place it in both the host and hosts section of ingress.yaml</h3>
-<p>vim ingress.yaml<br>
-k apply -f ingress.yaml</p>
-</blockquote>
-<blockquote>
-<p>k get ing (confirm)</p>
-</blockquote>
-<h4 id="apply-the-manifests">Apply the manifests</h4>
-<p>❯ ls  ~/k8s-resume-challenge/kubernetes/deploy-civo<br>
-mysql-cm-db-load-script.yaml<br>
-mysql-deployment.yaml<br>
-mysql-service.yaml <br>
-website-service.yaml<br>
-mysql-cm.yaml<br>
-mysql-secret.yaml     <br>
-website-deployment.yaml</p>
-<p><code>K apply -f ~/k8s-resume-challenge/kubernetes/deploy-civo/</code></p>
-<h3 id="place-domain-name-in-browser--eg">Place domain name in browser  e.g.</h3>
-<p>256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com</p>
-<h3 id="or-test-the-domain-name--on-cli">Or test the domain name  on cli</h3>
-<p>curl -k 256cd9d5-1098-40d9-baf7-aa1351716a3d.lb.civo.com</p>
-<h3 id="tear-down-ecom-cluster">Tear down &rsquo;ecom&rsquo; cluster</h3>
-<p><code>civo k3s remove ecom cluster</code><br>
-<code>nvim  ~/.kube/config</code><br>
-(manually delete &rsquo;ecom&rsquo; lines under <em>cluster</em>, <em>context</em> and <em>user</em> section)</p>
+<p>The second option, which I have set up, is a scaled down version of the above: the kubernetes cluster is scraped in favour of contaierd containers running each function. Easier and more accessible. The downside: loose built in kubernetes features like High Availability.</p>
+<ol start="2">
+<li>faasd (on a VM running containerd)<br>
+
+  <img src="https://journeyman33.github.io/k8s-resume-blog/img/faasd-wf.png" alt="faasd">
+
+</li>
+</ol>
+<p>Instead of running it on a VM I chose to run the faasd server On Prem, on a raspberry pi. Faasd, a light weight version of OpenFaas, uses Containerd instead of kubernetes which results in it running faster.  This is procedure is explained by the creator, Alex Ellis in his book, <a href="https://openfaas.gumroad.com/l/serverless-for-everyone-else">Serverless for everyone else</a></p>
+<p>The downside: This setup has a single point of failure. However, there are no cloud fees, and the raspberry pi address running on my local LAN, is routable externally thanks to the installation of inlets. The other problem particular to South Africa are daily scheduled power outages. After about a day without power my backup system will fail, the cell phone towers follow, and then not only can the server go down but the internet too.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>
+  <img src="https://journeyman33.github.io/k8s-resume-blog/img/half_page2.png" alt="laptop_pic">
+
+</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
 
                 
@@ -304,13 +336,13 @@ website-deployment.yaml</p>
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/k8s-resume-blog/cloud-kubernetes/docker_commands/" data-toggle="tooltip" data-placement="top" title="Docker Commands">&larr;
+                        <a href="/k8s-resume-blog/cloud-kubernetes/week_three/" data-toggle="tooltip" data-placement="top" title="Week Three">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/k8s-resume-blog/cloud-kubernetes/week_one/" data-toggle="tooltip" data-placement="top" title="Week One">Next
+                        <a href="/k8s-resume-blog/cloud-kubernetes/overview/" data-toggle="tooltip" data-placement="top" title="Cloud Architectural Overview">Next
                             Post &rarr;</a>
                     </li>
                     

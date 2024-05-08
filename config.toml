@@ -17,7 +17,7 @@ home = ["HTML", "RSS", "Algolia"]
   SEOTitle = "spec | journeyman Blog"
   description = "spec | two"
   keyword = "Microservice"
-  slogan = "Forrest Brazeal + Kodekloud"
+  slogan = "Devops and Kubernetes"
   upstreamAttribution = true
 
   image_404 = "img/404-bg.jpg"
@@ -98,11 +98,18 @@ home = ["HTML", "RSS", "Algolia"]
   [[params.addtional_menus]]
   title =  "ARCHIVE"
   #href =  "/archive/"
-  href = "https://journeyman33.github.io/k8s-resume-blog/archive/"
+  #href = "https://journeyman33.github.io/k8s-resume-blog/archive/"
   [[params.addtional_menus]]
   title =  "ABOUT"
   #href =  "/about/"
-  href = "https://journeyman33.github.io/k8s-resume-blog/about/"
+  #href = "https://journeyman33.github.io/k8s-resume-blog/about/"
+
+[[params.addtional_menus]]
+  title =  "K8s Resume Challenge"
+  href =  "/cloud-kubernetes/"
+  #href = "https://journeyman33.github.io/k8s-resume-blog/about/"
+
+
 
 [outputFormats.Algolia]
 baseName = "algolia"

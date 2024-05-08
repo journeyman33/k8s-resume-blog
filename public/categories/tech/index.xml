@@ -6,8 +6,22 @@
     <description>Recent content in Tech on Charles Vosloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/k8s-resume-blog/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud Architectural Overview</title>
+      <link>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/overview/</link>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/overview/</guid>
+      <description>Cloud Architecture and Overview I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.</description>
+    </item>
+    <item>
+      <title>Week Four</title>
+      <link>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_four/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_four/</guid>
+      <description>Extra Credit Three tasks were suggested here: Package Everything in Helm Implement Persistent Storage Implement Basic CI/CD Pipeline Make use of Serverless 2 Persistent Storage When the mysql deployment pods go down due to restarts, updates, or scaling the data is lost. Therefore we want to persist the contents of the container directory /var/lib/mysql with outside storage.&#xA;kubectl get storageclass -oyaml&#xA;apiVersion: storage.k8s.io/v1 kind: StorageClass metadata: name: civo-volume provisioner: csi.civo.com reclaimPolicy: Delete volumeBindingMode: WaitForFirstConsumer The presence of a StorageClass configuration indicates that Civo Cloud offers a default persistent storage solution to dynamically provision storage with PVs (Persistent volumes) and PVC&amp;rsquo;s (Persistent Volume Claims).</description>
+    </item>
     <item>
       <title>Week Three</title>
       <link>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_three/</link>
@@ -21,6 +35,13 @@
       <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_two/</guid>
       <description>Step 3: Set Up Kubernetes on a Public Cloud Provider Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:&#xA;civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer, cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch&#xA;You can interact with Civo in three ways:&#xA;The Dashboard Civo CLI Terraform I used the CLI. I was able to set up a bash script to automate the next step of exposing the cluster to https, Traefic LoadBalancer and cert-manager shown in the scripts section of my code-repository https://github.</description>
+    </item>
+    <item>
+      <title>Week One</title>
+      <link>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_one/</link>
+      <pubDate>Tue, 05 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_one/</guid>
+      <description>Step 1: Certification KodeKloud have excellent resources: The Certified Kubernetes Application Developer (CKAD) and what I enjoyed the most was the Ultimate Certified Kubernetes CKAD Mock Exams. I completed the CKA on 26 may 2021 and the CKS on 18 Nov 2021. Step 2: Containerize Your E-Commerce Website and Database A. Web Application Containerization The first step was to set up civo and kubectl cli client running on ubuntu Windows WSL running with Docker Desktop installed.</description>
     </item>
   </channel>
 </rss>
