@@ -12,3 +12,14 @@
     {{ end }}
 </div>
 {{ end }}
+
+<!-- Verify if the pages are being processed delete!!  -->
+{{ warnf "Processing section: %s" .Title }}
+{{ range .Pages }}
+    <!-- Posts data -->
+{{ else }}
+    {{ warnf "No posts found in section: %s" .Title }}
+{{ end }}
+
+
+
