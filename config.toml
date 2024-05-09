@@ -1,4 +1,5 @@
-baseurl = "https://journeyman33.github.io/k8s-resume-blog/"
+#baseurl = "https://journeyman33.github.io/k8s-resume-blog/"
+baseurl = "http://localhost:1313/"
 title = "Charles Vosloo"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"

@@ -1,25 +1,11 @@
+
 {{ define "main" }}
 <div class="container">
     <h1>{{ .Title }}</h1>
-    {{ range .Pages }}
-    <div class="post-preview">
-        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-        <p>{{ .Summary }}</p>
-        <p><small>Posted on {{ .Date.Format "January 2, 2006" }}</small></p>
-    </div>
-    {{ else }}
-    <p>No posts found in this section.</p>
-    {{ end }}
+    {{ partial "post_list.html" . }}
 </div>
 {{ end }}
 
-<!-- Verify if the pages are being processed delete!!  -->
-{{ warnf "Processing section: %s" .Title }}
-{{ range .Pages }}
-    <!-- Posts data -->
-{{ else }}
-    {{ warnf "No posts found in section: %s" .Title }}
-{{ end }}
 
 
 
