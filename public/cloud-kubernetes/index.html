@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head><script src="/k8s-resume-blog/livereload.js?mindelay=10&amp;v=2&amp;port=39229&amp;path=k8s-resume-blog/livereload" data-no-instant defer></script>
+<head><script src="/k8s-resume-blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=k8s-resume-blog/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,8 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="http://localhost:39229/k8s-resume-blog//img/k8s_resume_banner7.png">
-    <meta property="twitter:image" content="http://localhost:39229/k8s-resume-blog//img/k8s_resume_banner7.png" />
+    <meta property="og:image" content="http://localhost:1313/k8s-resume-blog//img/k8s_resume_banner7.png">
+    <meta property="twitter:image" content="http://localhost:1313/k8s-resume-blog//img/k8s_resume_banner7.png" />
     
 
     
@@ -190,63 +190,89 @@ if (!doNotTrack) {
 
 
 
-
-<article>
-    <div class="container">
-        <div class="row">
-            
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-         	
-                
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="journeyman33/k8s-resume-blog"
-        data-repo-id="R_kgDOLmnhzg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOLmnhzs4Ceicj"
-        data-mapping="pathname"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-
-            </div>
-            
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                
-                
-
-                
-                
-                <section>
-                    <hr>
-                    <h5>FRIENDS</h5>
-                    <ul class="list-inline">
-                        
-                        <li><a target="_blank" href="https://tunnel.bigtorig.com/">Raspberry Pi K3s Cluster &gt; https://tunnel.bigtorig.com</a></li>
-                        
-                    </ul>
-                </section>
-                
-            </div>
-        </div>
+<div class="container">
+    <h1>Cloud-Kubernetes</h1>
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/overview/">Cloud Architectural Overview</a></h2>
+        <p>Cloud Architecture and Overview I once suggested using Civo on a new project and was immediately dismissed in favour of AWS. A Civo managed Kubernetes cluster costs less than half of the the price of any of the three hyperscalers EKS, AKS and GKE, and being a dedicated Kubernetes cloud provider, running a lightweight version of Kubernetes (k3s), the set up times are super fast. This means, for a developer, it is cost effective in a second sense: you can start up a cluster and then shut it down each time you work on it.</p>
+        <p><small>Posted on March 30, 2024</small></p>
     </div>
-</article>
-
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_four/">Week Four</a></h2>
+        <p>Extra Credit Three tasks were suggested here: Package Everything in Helm Implement Persistent Storage Implement Basic CI/CD Pipeline Make use of Serverless 2 Persistent Storage When the mysql deployment pods go down due to restarts, updates, or scaling the data is lost. Therefore we want to persist the contents of the container directory /var/lib/mysql with outside storage.
+kubectl get storageclass -oyaml
+apiVersion: storage.k8s.io/v1 kind: StorageClass metadata: name: civo-volume provisioner: csi.civo.com reclaimPolicy: Delete volumeBindingMode: WaitForFirstConsumer The presence of a StorageClass configuration indicates that Civo Cloud offers a default persistent storage solution to dynamically provision storage with PVs (Persistent volumes) and PVC&rsquo;s (Persistent Volume Claims).</p>
+        <p><small>Posted on March 25, 2024</small></p>
+    </div>
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_three/">Week Three</a></h2>
+        <p>Step 6: Implement Configuration Management Task: Add a feature toggle to the web application to enable a “dark mode” for the website. I first attempted this without reading the instructions carefully. It does not ask to create a physical day night switch on the web app to toggle between dark mode and light mode, but rather to create a kubernetes config map to toggle the settings with the default set to dark mode.</p>
+        <p><small>Posted on March 20, 2024</small></p>
+    </div>
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_two/">Week Two</a></h2>
+        <p>Step 3: Set Up Kubernetes on a Public Cloud Provider Since it takes less than 2 minutes this is and easy first step. This command being the final iteration:
+civo kubernetes create ecom –remove-applications=traefik2-nodeport –applications traefik2-loadbalancer, cert-manager –cni-plugin cilium --nodes 1 --size g4s.kube.medium create-firewall –wait –save –merge –switch
+You can interact with Civo in three ways:
+The Dashboard Civo CLI Terraform I used the CLI. I was able to set up a bash script to automate the next step of exposing the cluster to https, Traefic LoadBalancer and cert-manager shown in the scripts section of my code-repository https://github.</p>
+        <p><small>Posted on March 15, 2024</small></p>
+    </div>
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/week_one/">Week One</a></h2>
+        <p>Step 1: Certification KodeKloud have excellent resources: The Certified Kubernetes Application Developer (CKAD) and what I enjoyed the most was the Ultimate Certified Kubernetes CKAD Mock Exams. I completed the CKA on 26 may 2021 and the CKS on 18 Nov 2021. Step 2: Containerize Your E-Commerce Website and Database A. Web Application Containerization The first step was to set up civo and kubectl cli client running on ubuntu Windows WSL running with Docker Desktop installed.</p>
+        <p><small>Posted on March 5, 2024</small></p>
+    </div>
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/civo_commands/">Civo Commands</a></h2>
+        <p>Civo: Setup and Teardown Some civo aliases kubernetes = k3s, k8s, kube
+applications = apps, addons, marketplace
+save = save, add, store, create, new
+ecom = the name of the cluster
+ecom = the name of the kubernetes namespace used
+Set up Civo api key (done once) Get API key from civo Dashboard &gt; login at https://dashboard.civo.com/
+On laptop brew install civo (linuxbrew)
+civo apikey add my-civo DAb75..
+civo apikey ls (confirm)</p>
+        <p><small>Posted on March 4, 2024</small></p>
+    </div>
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/docker_commands/">Docker Commands</a></h2>
+        <p>How to build and push Web-app Dockerfile from local environment cd ~/k8s-resume-challenge/web-app
+cat Dockerfile
+FROM php:7.4-apache
+RUN docker-php-ext-install mysqli
+COPY ./Web-app /var/www/html/ EXPOSE 80 ENV MYSQL_HOST=mysql-service
+docker build -t journeyman/ecom-web:v3 .
+docker run -p 8080:80 journeyman/ecom-web:v3 docker run &ndash;name myweb -it -d -p 8080:80 journeyman/ecom-web:v1 docker push journeyman/ecom-web:v3</p>
+        <p><small>Posted on March 4, 2024</small></p>
+    </div>
+    
+    <div class="post-preview">
+        <h2><a href="http://localhost:1313/k8s-resume-blog/cloud-kubernetes/faasd_commands/">Faasd</a></h2>
+        <p>login from LAN faas-cli login -g http://192.168.0.124 -p d1e2..
+login script ❯ cat connect.sh
+#!/bin/bash
+export PASSWORD=d1e&hellip;
+export IP=192.168.0.127
+export OPENFAAS_URL=http://$IP:8080
+faas-cli login &ndash;gateway $OPENFAAS_URL &ndash;password $PASSWORD &ndash;username &ldquo;admin&rdquo;
+list functions ❯ faas-cli ls
+Function Invocations Replicas
+curl 0 1
+figlet 2 1
+identicon 1 1
+nodeinfo 1</p>
+        <p><small>Posted on March 3, 2024</small></p>
+    </div>
+    
+</div>
 
 
 

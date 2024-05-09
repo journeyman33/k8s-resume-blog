@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="container">
+    <h1>{{ .Title }}</h1>
+    {{ range .Pages }}
+    <div class="post-preview">
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Summary }}</p>
+        <p><small>Posted on {{ .Date.Format "January 2, 2006" }}</small></p>
+    </div>
+    {{ else }}
+    <p>No posts found in this section.</p>
+    {{ end }}
+</div>
+{{ end }}
