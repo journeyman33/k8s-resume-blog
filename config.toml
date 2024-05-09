@@ -14,10 +14,10 @@ home = ["HTML", "RSS", "Algolia"]
 
 [params]
   header_image = "img/k8s_resume_banner7.png"
-  SEOTitle = "spec | journeyman Blog"
-  description = "spec | two"
-  keyword = "Microservice"
-  slogan = "Devops and Kubernetes"
+  SEOTitle = "Charles Vosloo"
+  description = "Blog by Charles Vosloo"
+  keyword = "Microservice, kubernetes, DevOps"
+  slogan = ""
   upstreamAttribution = true
 
   image_404 = "img/404-bg.jpg"
@@ -36,7 +36,7 @@ home = ["HTML", "RSS", "Algolia"]
   algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Charles Vosloo:  I am interested in Kubernetes, Devops, Opensource, family and outdoors."
+  sidebar_about_description = "I am interested in Kubernetes, Devops, Opensource, family and outdoors."
   sidebar_avatar = "img/eye_of_africa_pic3.png" 
 
   featured_tags = false
@@ -69,19 +69,21 @@ home = ["HTML", "RSS", "Algolia"]
   [params.social]
   rss            = true
   email          = "voslooc@gmail.com"
+  linkedin       = "https://www.linkedin.com/in/charlesvosloo/"
+  github         = "https://github.com/journeyman33"
+  gitlab         = "https://gitlab.com/-/user_settings/profile"
+
+
   #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
-  #twitter       = "full profile url in twitter"
-  linkedin       = "https://www.linkedin.com/in/charlesvosloo/"
+  #twitter       = "full profile url in twitter"  
   #stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
   #instagram     = "full profile url in instagram"
-  github         = "https://github.com/journeyman33"
   #wechat         = "your wechat qr code image"
   #medium        = "full profile url in medium"
   #slack         = "full workspace url in slack"
   #pinterest     = "full profile url in pinterest"
   #reddit        = "full profile url in reddit"
-  gitlab         = "https://gitlab.com/-/user_settings/profile"
   #mastodon      = "full profile url in mastodon"
   #keybase       = "full profile url in keybase"
   #xing          = "https://www.xing.com/profile/yourxingid"
@@ -95,16 +97,16 @@ home = ["HTML", "RSS", "Algolia"]
   title =  "canva.com"
   href =  "https://canva.com"
   
-  [[params.addtional_menus]]
+  [[params.additional_menus]]
   title =  "ARCHIVE"
-  #href =  "/archive/"
+  href =  "/archive/"
   #href = "https://journeyman33.github.io/k8s-resume-blog/archive/"
-  [[params.addtional_menus]]
-  title =  "ABOUT"
-  #href =  "/about/"
+  [[params.additional_menus]]
+  title =  "ABOUT ME"
+  href =  "/about/"
   #href = "https://journeyman33.github.io/k8s-resume-blog/about/"
 
-[[params.addtional_menus]]
+[[params.additional_menus]]
   title =  "K8s Resume Challenge"
   href =  "/cloud-kubernetes/"
   #href = "https://journeyman33.github.io/k8s-resume-blog/about/"
