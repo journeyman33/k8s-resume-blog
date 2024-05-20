@@ -1,10 +1,13 @@
 ---
-title:       "An Example Post"
+title:       "{{ replace .Name "-" " "| title }}"
 subtitle:    ""
 description: ""
 date:        {{ now.Format "2006-01-02" }}
-author:      "Charles Vosloo"
+# author:      "Charles Vosloo"
 image:       ""
-tags:        ["tag1", "tag2"]
-categories:  ["Tech" ]
+tags:       
+  - Devops
+  - Kubernetes
+categories: 
+  Linux
 ---

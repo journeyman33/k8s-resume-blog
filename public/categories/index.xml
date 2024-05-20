@@ -2,24 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Charles Vosloo</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>http://localhost:40431/categories/</link>
     <description>Recent content in Categories on Charles Vosloo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:40431/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:40431/categories/linux/</link>
+      <pubDate>Fri, 10 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:40431/categories/linux/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Tech</title>
-      <link>http://localhost:1313/categories/tech/</link>
+      <link>http://localhost:40431/categories/tech/</link>
       <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/tech/</guid>
+      <guid>http://localhost:40431/categories/tech/</guid>
       <description></description>
     </item>
     <item>
       <title>Mynotes</title>
-      <link>http://localhost:1313/categories/mynotes/</link>
+      <link>http://localhost:40431/categories/mynotes/</link>
       <pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/mynotes/</guid>
+      <guid>http://localhost:40431/categories/mynotes/</guid>
       <description></description>
     </item>
   </channel>
